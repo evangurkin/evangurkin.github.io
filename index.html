@@ -3,334 +3,334 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Evan Gurkin · Primates, minds & mental health</title>
-<meta name="description" content="Evan Gurkin, PhD student in Biological Anthropology at the University of Cambridge. Primate cognition, social behaviour, and evolutionary psychiatry.">
+<title>Evan Gurkin · Primate Behaviour & Evolutionary Psychiatry</title>
+<meta name="description" content="Evan Gurkin, PhD student in Biological Anthropology at the University of Cambridge. Primate cognition, social bonds and the evolutionary roots of mental health.">
+<meta property="og:title" content="Evan Gurkin">
+<meta property="og:description" content="Primate cognition, social bonds and the evolutionary roots of mental health.">
+<meta property="og:image" content="https://evangurkin.com/img/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Caveat:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Photos live in img/ (site slots) and img/gallery/. */
 :root{
-  --ink:#16201b; --paper:#f4efe4; --paper-2:#ebe3d2; --line:#d8cdb6;
-  --forest:#1f4d3a; --moss:#5b7f4a; --sun:#e8743b; --sea:#2b7a8c; --sand:#e9c98f;
-  --muted:#5f665f;
+  --bg:#f5f2ec; --bg-2:#ebe6dc; --ink:#121212; --ink-2:#3a3a38; --muted:#77736b; --line:#d6d0c4;
+  --sun:#d9622b; --sand:#e8cfa3; --sea:#2f6f7e;
+  --pad:clamp(16px,4vw,48px);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 "Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-/* paper grain */
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.65 "Archivo",system-ui,sans-serif;font-stretch:100%;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
 a{color:inherit}
-.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-.hand{font-family:"Caveat",cursive;font-weight:700}
-.mono{font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
-.serif{font-family:"Fraunces",Georgia,serif}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+.display{font-family:"Archivo",sans-serif;font-stretch:72%;font-variation-settings:"wdth" 72;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.9}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
 
 /* NAV */
-nav.top{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:4px;padding:6px;
-  background:rgba(22,32,27,.82);backdrop-filter:blur(10px);border-radius:999px;box-shadow:0 8px 30px rgba(0,0,0,.18)}
-nav.top a{color:#f4efe4;text-decoration:none;font-size:.88rem;font-weight:500;padding:8px 14px;border-radius:999px;transition:background .2s}
-nav.top a:hover{background:var(--sun)}
+header.bar{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,color .3s,border-color .3s;color:#fff;border-bottom:1px solid transparent}
+header.bar.solid{background:rgba(245,242,236,.92);backdrop-filter:blur(10px);color:var(--ink);border-color:var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+.brand{font-stretch:80%;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-size:.95rem;white-space:nowrap}
+.bar nav{display:flex;gap:28px}
+.bar nav a{text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.85;white-space:nowrap}
+.bar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
 
 /* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;
-  background:url(img/hero.jpg) center 40%/cover, radial-gradient(120% 90% at 80% 10%, #e8743b 0%, #b2532e 22%, #1f4d3a 60%, #0f2a20 100%)}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,15,.15) 0%,rgba(10,20,15,0) 30%,rgba(10,20,15,.55) 70%,rgba(10,20,15,.9) 100%),linear-gradient(90deg,rgba(10,20,15,.45) 0%,rgba(10,20,15,0) 55%)}
-.hero .inner{text-shadow:0 2px 18px rgba(0,0,0,.45)}
-.hero svg.ridges{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;z-index:1;opacity:.9}
-.hero .inner{position:relative;z-index:2;padding-bottom:9vh;width:100%}
-.hero .coords{opacity:.85;margin-bottom:18px}
-.hero h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(3.4rem,11vw,9.5rem);line-height:.88;letter-spacing:-.03em;margin:0}
-.hero h1 em{font-style:italic;font-weight:400;color:var(--sand)}
-.hero .tag{font-size:clamp(1.1rem,2.2vw,1.5rem);max-width:36em;margin:26px 0 0;opacity:.95}
-.hero .note{position:absolute;right:6%;top:22%;z-index:2;transform:rotate(-6deg);font-size:2rem;color:var(--sand);text-align:center;line-height:1}
-.hero .note svg{display:block;margin:6px auto 0}
-.scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;opacity:.8;animation:bob 2s ease-in-out infinite}
-@keyframes bob{50%{transform:translate(-50%,8px)}}
+.hero{position:relative;height:100svh;min-height:620px;color:#fff;overflow:hidden;background:#20261f url(img/hero.jpg) center 40%/cover;padding:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 50%,rgba(0,0,0,.7) 100%),linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,0) 55%)}
+.hero .inner{position:absolute;inset:auto 0 0 0;z-index:2;padding-bottom:clamp(28px,6vh,64px)}
+.hero h1{font-size:clamp(4rem,15vw,13.5rem);margin:0}
+.hero .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:22px;border-top:1px solid rgba(255,255,255,.4);padding-top:18px}
+.hero .tag{font-size:clamp(1.05rem,1.7vw,1.35rem);max-width:34em;margin:0;font-weight:400}
+.hero .tag .serif{font-size:1.2em}
+.hero .meta{text-align:right;opacity:.9;line-height:1.9}
 
-/* MARQUEE */
-.marquee{background:var(--sun);color:var(--ink);overflow:hidden;white-space:nowrap;border-block:2px solid var(--ink)}
-.marquee .track{display:inline-block;padding:14px 0;animation:slide 40s linear infinite;font-family:"Fraunces",serif;font-weight:700;font-size:1.5rem}
-.marquee span{margin:0 26px}
-.marquee i{font-style:normal;color:var(--paper)}
+/* TICKER */
+.ticker{background:var(--ink);color:var(--bg);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-block;padding:13px 0;animation:slide 50s linear infinite}
+.ticker span{margin:0 22px}
+.ticker i{font-style:normal;color:var(--sun)}
 @keyframes slide{to{transform:translateX(-50%)}}
 
+/* SECTIONS */
+section{padding:clamp(80px,11vw,150px) 0}
+.head{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:baseline;margin-bottom:clamp(40px,5vw,64px)}
+.head .mono{color:var(--muted)}
+.head h2{font-size:clamp(2.6rem,7vw,5.6rem);margin:0}
+.head h2 .serif{font-size:1.06em;color:var(--sun)}
+
 /* ABOUT */
-section{padding:120px 0}
-.label{color:var(--sun);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.label::before{content:"";width:28px;height:2px;background:currentColor}
-h2{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.4rem,6vw,4.6rem);line-height:.95;letter-spacing:-.02em;margin:0 0 30px}
-h2 em{font-weight:400;color:var(--forest)}
-.about{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
-.about p{font-size:1.12rem;margin:0 0 18px;max-width:34em}
-.about p.big{font-family:"Fraunces",serif;font-size:1.6rem;line-height:1.35}
-.polaroids{position:relative;height:520px}
-.pol{position:absolute;background:#fff;padding:12px 12px 52px;box-shadow:0 18px 40px rgba(40,30,10,.22);transition:transform .35s}
-.pol:hover{transform:rotate(0) scale(1.04)!important;z-index:5}
-.pol .ph{width:100%;height:100%;background-size:cover;background-position:center}
-.pol .cap{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-family:"Caveat";font-size:1.5rem;color:#333}
-.pol.a{width:290px;height:340px;left:4%;top:0;transform:rotate(-5deg)}
-.pol.b{width:250px;height:290px;right:0;top:170px;transform:rotate(6deg)}
-.pol.a .ph{background-image:url(img/me.jpg),linear-gradient(160deg,#5b7f4a,#1f4d3a);background-position:30% 30%}
-.pol.b .ph{background-image:url(img/surf.jpg),linear-gradient(170deg,#e9c98f 0%,#e8743b 35%,#2b7a8c 62%,#174552 100%)}
-.tape{position:absolute;top:-14px;left:50%;width:110px;height:30px;transform:translateX(-50%) rotate(-3deg);background:rgba(233,201,143,.75)}
-.stats{display:flex;gap:34px;margin-top:34px;flex-wrap:wrap}
-.stats div{border-top:2px solid var(--ink);padding-top:10px;min-width:110px}
-.stats b{display:block;font-family:"Fraunces",serif;font-size:2.6rem;font-weight:900;line-height:1}
+.about .grid{display:grid;grid-template-columns:200px 1fr 1fr;gap:24px}
+.about .copy p{margin:0 0 18px;max-width:33em;color:var(--ink-2)}
+.about .copy p.lead{font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.4;color:var(--ink)}
+.about figure{margin:0}
+.about figure .ph{aspect-ratio:4/5;background:#ccc url(img/me.jpg) 30% 30%/cover}
+figcaption{margin-top:10px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px;border-top:1px solid var(--ink)}
+.stats div{padding:16px 16px 0 0}
+.stats b{display:block;font-stretch:72%;font-variation-settings:"wdth" 72;font-weight:800;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1}
+.stats span{color:var(--muted)}
 
 /* RESEARCH */
-.research{background:var(--forest);color:var(--paper)}
-.research h2 em{color:var(--sand)}
-.research .intro{font-size:1.2rem;max-width:36em;margin:0 0 50px;opacity:.9}
-.themes{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-.theme{position:relative;border-radius:22px;padding:34px;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;color:#fff;transition:transform .3s}
-.theme:hover{transform:translateY(-6px)}
-.theme .num{position:absolute;top:18px;right:26px;font-family:"Fraunces",serif;font-weight:900;font-size:6rem;line-height:1;opacity:.18}
-.theme h3{font-family:"Fraunces",serif;font-size:1.9rem;line-height:1.05;margin:8px 0 10px}
-.theme p{margin:0;opacity:.92;max-width:28em}
-.theme .q{font-family:"Caveat";font-size:1.6rem;color:var(--sand);margin-top:14px}
-.t1{background:linear-gradient(145deg,#2b7a8c,#16414b)}
-.t2{background:linear-gradient(145deg,#c9562a,#7b2e18)}
-.t3{background:linear-gradient(145deg,#a07b3a,#5a4019)}
-.t4{background:linear-gradient(145deg,#4b3a66,#22182f)}
-.theme.ph{background-size:cover;background-position:center;min-height:380px}
-.theme.ph::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,14,.05) 20%,rgba(10,18,14,.88) 88%)}
-.theme.ph>*{position:relative}.theme.ph .num{position:absolute}
-.t2.ph{background-image:url(img/research-cylinder.jpg);background-position:center 40%}
-.t3.ph{background-image:url(img/research-grooming.jpg)}
-.t4.ph{background-image:url(img/research-mother.jpg);background-position:center 35%}
-.theme .credit{position:absolute;top:22px;left:34px;font-size:.7rem;opacity:.8}
+.research{background:var(--bg-2)}
+.themes{display:grid;grid-template-columns:repeat(2,1fr);gap:48px 24px}
+.theme{margin:0}
+.theme .ph{position:relative;aspect-ratio:4/3;background:var(--ink);overflow:hidden}
+.theme .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.theme:hover .ph img{transform:scale(1.04)}
+.theme .ph.empty{display:grid;place-items:center;background:linear-gradient(160deg,#3d6f7b,#1d3c44);color:rgba(255,255,255,.75)}
+.theme .ph .n{position:absolute;top:16px;left:16px;color:#fff}
+.theme .txt{display:grid;grid-template-columns:1fr auto;gap:6px 24px;padding-top:16px;border-top:1px solid var(--ink);margin-top:16px}
+.theme h3{font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:800;text-transform:uppercase;font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:1;margin:0}
+.theme .where{color:var(--muted);text-align:right;white-space:nowrap}
+.theme p{grid-column:1/-1;margin:6px 0 0;color:var(--ink-2);max-width:36em}
 
 /* FIELD */
-.field h2 em{color:var(--sea)}
-.map{position:relative;background:var(--paper-2);border:2px solid var(--ink);border-radius:24px;padding:20px;margin-bottom:60px}
+.map{border:1px solid var(--ink);padding:clamp(12px,2vw,28px);margin-bottom:clamp(40px,5vw,72px)}
 .map svg{width:100%;height:auto;display:block}
-.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-@media (max-width:980px){.sites{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.sites{grid-template-columns:1fr}}
-.site{background:#fff;border:2px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:6px 6px 0 var(--ink);transition:transform .2s,box-shadow .2s}
-.site:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
-.site .ph{height:230px;background-size:cover;background-position:center;position:relative}
-.site .ph .yr{position:absolute;top:12px;left:12px;background:var(--ink);color:var(--paper);padding:4px 10px;border-radius:999px}
-.site .body{padding:18px 20px 22px}
-.site h3{font-family:"Fraunces",serif;margin:0 0 4px;font-size:1.45rem}
-.site .sp{color:var(--sun);font-weight:600;font-size:.9rem;margin-bottom:8px}
-.site p{margin:0;color:var(--muted);font-size:.95rem}
-.s-gib .ph{background-image:url(img/gibraltar.jpg),linear-gradient(160deg,#9cc3d0,#6b8f6a 60%,#3f5a3a)}
-.s-kos .ph{background-image:url(img/koshima.jpg),linear-gradient(160deg,#7fb6a8,#2b7a8c 55%,#1a4a55)}
-.s-toi .ph{background-image:url(img/capetoi.jpg),linear-gradient(160deg,#c9d79a,#6d8f46 60%,#36502a)}
-.s-tsa .ph{background-image:url(img/tsaobis.jpg),linear-gradient(160deg,#f0b46e,#c46a32 55%,#6b3519)}
-.s-awa .ph{background-image:url(img/awajishima.jpg),linear-gradient(160deg,#9cc3d0,#2b7a8c)}
-.s-iss .ph{background-image:url(img/issa.jpg),linear-gradient(160deg,#9fbf6b,#4c7a35 55%,#203d1a)}
+.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 24px}
+.site{margin:0}
+.site .ph{aspect-ratio:1/1;overflow:hidden;background:var(--bg-2)}
+.site .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.site:hover .ph img{transform:scale(1.04)}
+.site .ph.empty{display:grid;place-items:center;color:var(--muted);border:1px dashed #bdb6a8}
+.site figcaption{color:var(--ink)}
+.site .cap{display:flex;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--ink)}
+.site h3{margin:0;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.site .yr{color:var(--muted);white-space:nowrap}
+.site .sp{color:var(--sun);font-size:.92rem;font-weight:600;margin-top:2px}
+.site p{margin:4px 0 0;color:var(--ink-2);font-size:.95rem}
 
 /* GALLERY */
-.gallery{background:var(--paper-2)}
-.gallery h2 em{color:var(--sun)}
-.wall{columns:4 240px;column-gap:16px}
-.wall figure{margin:0 0 16px;break-inside:avoid;background:#fff;padding:8px 8px 0;border:2px solid var(--ink);border-radius:10px;box-shadow:4px 4px 0 var(--ink)}
-.wall img{display:block;width:100%;height:auto;border-radius:4px}
-.wall figcaption{font-family:"Caveat";font-size:1.35rem;padding:4px 4px 6px;line-height:1.1}
+.gallery{background:var(--ink);color:var(--bg)}
+.gallery .head .mono{color:#9a968e}
+.wall{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 16px}
+.wall figure{margin:0}
+.wall .ph{aspect-ratio:4/5;overflow:hidden;background:#222}
+.wall img{width:100%;height:100%;object-fit:cover;filter:saturate(.9);transition:filter .4s,transform 1s}
+.wall figure:hover img{filter:none;transform:scale(1.03)}
+.wall figcaption{color:#a5a196}
+
 /* WRITING */
-.writing{background:var(--ink);color:var(--paper)}
-.writing h2 em{color:var(--sun)}
-.pubs{list-style:none;padding:0;margin:0;counter-reset:p}
-.pubs li{counter-increment:p;display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid rgba(244,239,228,.18)}
-.pubs li::before{content:"0" counter(p);font-family:"Fraunces",serif;font-weight:900;font-size:2.4rem;color:var(--sun);line-height:1}
-.pubs .t{font-family:"Fraunces",serif;font-size:1.4rem;line-height:1.25}
-.pubs .a{display:block;opacity:.65;font-size:.95rem;margin-top:4px}
-.pubs .st{border:1px solid var(--sand);color:var(--sand);padding:4px 12px;border-radius:999px;white-space:nowrap}
+.pubs{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.pubs li{display:grid;grid-template-columns:200px 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
+.pubs .yr{color:var(--muted)}
+.pubs .t{font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.3;font-weight:500}
+.pubs .a{display:block;color:var(--muted);font-size:.95rem;margin-top:4px}
+.pubs .a b{color:var(--ink);font-weight:600}
+.pubs .st{border:1px solid var(--ink);padding:5px 12px;white-space:nowrap}
 
 /* CONTACT */
-.contact{text-align:center;background:var(--sun);color:var(--ink);position:relative;overflow:hidden}
-.contact h2{font-size:clamp(3rem,9vw,7.5rem)}
-.contact h2 em{color:var(--paper)}
-.contact p{font-size:1.2rem;max-width:32em;margin:0 auto 34px}
-.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;padding:14px 26px;border-radius:999px;border:2px solid var(--ink);text-decoration:none;font-weight:600;background:var(--paper);box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
-.btn.dark{background:var(--ink);color:var(--paper)}
-.contact .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center;text-align:left}
-.contact .grid p{margin:0 0 34px}.contact .btns{justify-content:flex-start}
-.contact .pol{position:relative;width:100%;max-width:400px;aspect-ratio:4/5;transform:rotate(-4deg);margin:0 auto}
-.contact .pol .ph{background-image:url(img/contact.jpg);background-position:40% 40%}
-.contact .addr{margin-top:40px;font-size:.95rem;opacity:.8}
-footer{background:var(--ink);color:var(--paper);padding:26px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;opacity:.95}
+.contact{position:relative;color:#fff;background:#1a1a1a url(img/contact.jpg) 60% 40%/cover;padding:0}
+.contact::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.15) 100%)}
+.contact .wrap{position:relative;min-height:80svh;display:flex;flex-direction:column;justify-content:center;padding-top:110px;padding-bottom:110px}
+.contact h2{font-size:clamp(3.4rem,11vw,9rem);margin:14px 0 22px}
+.contact h2 .serif{color:var(--sand)}
+.contact p{font-size:1.15rem;max-width:30em;margin:0 0 34px;opacity:.92}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 22px;border:1px solid #fff;text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s}
+.btn:hover,.btn.solid{background:#fff;color:var(--ink)}
+.btn.solid:hover{background:var(--sun);border-color:var(--sun);color:#fff}
+.contact .addr{margin-top:44px;opacity:.75}
 
-/* reveal on scroll */
-.rv{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+footer .sunline{height:4px;background:linear-gradient(90deg,var(--sea),var(--sand) 45%,var(--sun))}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px;color:var(--muted)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
 .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.marquee .track,.scroll{animation:none}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.ticker .track{animation:none}}
 
-@media (max-width:820px){
-  nav.top{top:auto;bottom:14px;max-width:calc(100% - 24px);overflow-x:auto}
-  nav.top a{padding:8px 11px;font-size:.82rem}
-  .hero .note{display:none}
+@media (max-width:980px){
+  .head{grid-template-columns:1fr;gap:10px}
+  .about .grid{grid-template-columns:1.2fr 1fr}.about .spacer{display:none}
+  .sites{grid-template-columns:repeat(2,1fr)}
+  .wall{grid-template-columns:repeat(3,1fr)}
+  .pubs li{grid-template-columns:130px 1fr auto}
+}
+@media (max-width:680px){
+  .bar nav{gap:14px}.bar nav a{font-size:.68rem;letter-spacing:.05em}.bar nav a.hide-s{display:none}
+  .brand{font-size:.82rem}
   .hero{background-position:80% center}
-  .about{grid-template-columns:1fr;gap:40px}
-  .polaroids{height:420px}
-  .pol.a{width:230px;height:280px;left:0}
-  .pol.b{width:200px;height:240px;top:150px}
+  .hero .meta{text-align:left}
+  .about .grid{grid-template-columns:1fr}.about figure{order:-1}
   .themes{grid-template-columns:1fr}
-  .contact .grid{grid-template-columns:1fr;gap:40px;text-align:center}.contact .btns{justify-content:center}
-  .contact .pol{max-width:280px}
-  .pubs li{grid-template-columns:1fr;gap:8px}
-  .pubs .st{justify-self:start}
-  section{padding:84px 0}
+  .sites{grid-template-columns:1fr 1fr;gap:28px 14px}
+  .site p{display:none}
+  .wall{grid-template-columns:1fr 1fr;gap:20px 10px}
+  .pubs li{grid-template-columns:1fr;gap:8px}.pubs .st{justify-self:start}
+  .contact::before{background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.82))}
 }
 </style>
 </head>
 <body>
 
-<nav class="top">
-  <a href="#about">About</a><a href="#research">Research</a><a href="#field">Field</a><a href="#gallery">Photos</a><a href="#writing">Writing</a><a href="#contact">Say hi</a>
-</nav>
-
-<header class="hero" id="top">
-  <div class="wrap inner">
-    <div class="mono coords">52.2053° N, 0.1218° E — Cambridge · 34.2257° N, 77.9447° W — Wilmington</div>
-    <h1>Evan<br><em>Gurkin</em></h1>
-    <p class="tag">Primatologist-in-training. I watch monkeys and apes think, squabble and make up, then ask what that tells us about the human mind and mental health.</p>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Evan Gurkin</a>
+    <nav>
+      <a href="#about">About</a><a href="#research">Research</a><a href="#field">Field</a><a href="#gallery" class="hide-s">Photos</a><a href="#writing" class="hide-s">Writing</a><a href="#contact">Contact</a>
+    </nav>
   </div>
-  <svg class="scroll" width="26" height="40" viewBox="0 0 26 40" fill="none" stroke="#fff" stroke-width="2"><rect x="1" y="1" width="24" height="38" rx="12"/><line x1="13" y1="9" x2="13" y2="16"/></svg>
 </header>
 
-<div class="marquee" aria-hidden="true"><div class="track">
-  <span>Barbary macaques</span><i>✦</i><span>Japanese macaques</span><i>✦</i><span>Chacma baboons</span><i>✦</i><span>Chimpanzees</span><i>✦</i><span>Feral horses</span><i>✦</i><span>Evolutionary psychiatry</span><i>✦</i>
-  <span>Barbary macaques</span><i>✦</i><span>Japanese macaques</span><i>✦</i><span>Chacma baboons</span><i>✦</i><span>Chimpanzees</span><i>✦</i><span>Feral horses</span><i>✦</i><span>Evolutionary psychiatry</span><i>✦</i>
+<section class="hero" id="top" aria-label="Introduction">
+  <div class="wrap inner">
+    <h1 class="display">Evan<br>Gurkin</h1>
+    <div class="row">
+      <p class="tag">Primate behaviour, cognition and the <span class="serif">evolutionary roots</span> of mental health.</p>
+      <div class="meta mono">PhD Student · University of Cambridge<br>Cambridge, UK — Wilmington, NC</div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker mono" aria-hidden="true"><div class="track">
+  <span>Chimpanzees</span><i>✺</i><span>Japanese macaques</span><i>✺</i><span>Barbary macaques</span><i>✺</i><span>Chacma baboons</span><i>✺</i><span>Feral horses</span><i>✺</i><span>Evolutionary psychiatry</span><i>✺</i>
+  <span>Chimpanzees</span><i>✺</i><span>Japanese macaques</span><i>✺</i><span>Barbary macaques</span><i>✺</i><span>Chacma baboons</span><i>✺</i><span>Feral horses</span><i>✺</i><span>Evolutionary psychiatry</span><i>✺</i>
 </div></div>
 
-<section id="about">
-  <div class="wrap about">
-    <div class="rv">
-      <div class="label mono">About</div>
-      <h2>Hi, I'm Ev. <em>Nice to meet you.</em></h2>
-      <p class="big">I'm a PhD student in Biological Anthropology at Darwin College, Cambridge, working with Dr Sylvain Lemoine.</p>
-      <p>I grew up around community mental health care, and that's a big part of why I came to primatology. If we understand how other primates cope with stress, isolation and social life, we get a deeper view of what's going on in our own minds.</p>
-      <p>Before Cambridge I did an MSc in Human Evolution and Behaviour at UCL and a BA at UNC Chapel Hill. Along the way I've been an EMT and a surf instructor. I'm a Wilmington, NC kid at heart.</p>
-      <div class="stats">
-        <div><b>6</b><span class="mono">species in the field</span></div>
-        <div><b>4</b><span class="mono">countries in the field</span></div>
-        <div><b>583</b><span class="mono">hours of baboon video coded</span></div>
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="head"><span class="mono">01 — About</span><h2 class="display rv">Field <span class="serif">to</span> clinic</h2></div>
+    <div class="grid">
+      <div class="spacer"></div>
+      <div class="copy rv">
+        <p class="lead">I'm a PhD student in Biological Anthropology at Darwin College, Cambridge, supervised by Dr Sylvain Lemoine.</p>
+        <p>I study how primates think and how they build relationships, and what that comparative work can tell us about human mental health. I grew up around community mental health care, and that question has followed me into the field, from chimpanzees in western Tanzania to macaques in Japan and Gibraltar.</p>
+        <p>Before Cambridge I completed an MSc in Human Evolution and Behaviour at UCL (Distinction) and a BA at UNC Chapel Hill. I've also worked as an EMT and a surf instructor. Home is Wilmington, North Carolina.</p>
+        <div class="stats">
+          <div><b>6</b><span class="mono">Species in the field</span></div>
+          <div><b>4</b><span class="mono">Countries</span></div>
+          <div><b>583</b><span class="mono">Hours of baboon video coded</span></div>
+        </div>
       </div>
-    </div>
-    <div class="polaroids rv">
-      <div class="pol a"><div class="tape"></div><div class="ph"></div><div class="cap">making friends, Cape Toi</div></div>
-      <div class="pol b"><div class="tape"></div><div class="ph"></div><div class="cap">surf check, Koshima</div></div>
+      <figure class="rv"><div class="ph" role="img" aria-label="Evan with a feral horse at Cape Toi, Japan"></div><figcaption class="mono">Cape Toi, Japan</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section class="research" id="research">
   <div class="wrap">
-    <div class="label mono">Research</div>
-    <h2 class="rv">Four questions <em>I can't stop asking</em></h2>
-    <p class="intro rv">My work links primatology and mental health through comparative cognition: how minds are built, how bonds form, and what happens when either goes wrong.</p>
+    <div class="head"><span class="mono">02 — Research</span><h2 class="display rv">Current <span class="serif">work</span></h2></div>
     <div class="themes">
-      <article class="theme t1 rv"><div class="num">01</div><div class="mono">Barbary macaques · Gibraltar</div><h3>What does a monkey see in the mirror?</h3><p>How macaques explore and manipulate mirrors and reflective objects. This is the core of my Cambridge PhD.</p><div class="q">self-directed behaviour</div></article>
-      <article class="theme t2 ph rv"><div class="num">02</div><div class="mono">Japanese macaques · Koshima</div><h3>Who can resist the snack?</h3><p>A multi-site replication of the cylinder task, looking at how inhibitory control varies with sex and rank. That's me running a trial.</p><div class="q">inhibitory control</div></article>
-      <article class="theme t3 ph rv"><div class="num">03</div><div class="mono">Chacma baboons · Tsaobis, Namibia</div><h3>Would you let them groom your neck?</h3><p>Whether grooming vulnerable body parts tracks how strong the bond between two partners is.</p><div class="q">social bonds &amp; trust</div><span class="credit mono">Photo: chimpanzees, Issa Valley</span></article>
-      <article class="theme t4 ph rv"><div class="num">04</div><div class="mono">Clinical &amp; cross-cultural</div><h3>Can evolution help psychiatry?</h3><p>Focus groups with UK psychiatrists on where evolutionary thinking helps in the clinic and where it doesn't, plus how adolescence, culture and isolation shape mental health across species.</p><div class="q">evolutionary psychiatry</div><span class="credit mono">Photo: mother &amp; young, Issa Valley</span></article>
+      <article class="theme rv">
+        <div class="ph empty"><span class="n mono">01</span><span class="mono">Photo coming soon</span></div>
+        <div class="txt"><h3>Mirrors &amp; self-directed behaviour</h3><span class="where mono">Gibraltar</span>
+        <p>How Barbary macaques explore and use mirrors and reflective surfaces. The core project of my PhD.</p></div>
+      </article>
+      <article class="theme rv">
+        <div class="ph"><img src="img/research-cylinder.jpg" alt="Evan running the cylinder task with a Japanese macaque" style="object-position:center 40%"><span class="n mono">02</span></div>
+        <div class="txt"><h3>Inhibitory control</h3><span class="where mono">Koshima, Japan</span>
+        <p>A multi-site replication of the cylinder task with Japanese macaques, testing how self-control varies with sex and dominance rank.</p></div>
+      </article>
+      <article class="theme rv">
+        <div class="ph"><img src="img/research-grooming.jpg" alt="Two chimpanzees grooming above the Issa Valley"><span class="n mono">03</span></div>
+        <div class="txt"><h3>Social bonds &amp; trust</h3><span class="where mono">Tsaobis, Namibia</span>
+        <p>Whether grooming of vulnerable body regions reflects the strength of the bond between partners, drawing on 583 hours of video of wild chacma baboons.</p></div>
+      </article>
+      <article class="theme rv">
+        <div class="ph"><img src="img/research-mother.jpg" alt="Chimpanzee mother and juvenile feeding, Issa Valley" style="object-position:center 35%"><span class="n mono">04</span></div>
+        <div class="txt"><h3>Evolutionary psychiatry</h3><span class="where mono">UK &amp; comparative</span>
+        <p>Focus groups with UK psychiatrists on how evolutionary frameworks are used in clinical practice, alongside comparative work on adolescence, cultural transmission and social isolation.</p></div>
+      </article>
     </div>
   </div>
 </section>
 
 <section class="field" id="field">
   <div class="wrap">
-    <div class="label mono">Fieldwork</div>
-    <h2 class="rv">Where I've been <em>getting muddy</em></h2>
+    <div class="head"><span class="mono">03 — Fieldwork</span><h2 class="display rv">Field <span class="serif">sites</span></h2></div>
     <div class="map rv">
-      <svg viewBox="0 0 1000 480" role="img" aria-label="Map of field sites">
-        <defs><pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#16201b" opacity=".28"/></pattern></defs>
-        <!-- stylised continents -->
+      <svg viewBox="0 0 1000 440" role="img" aria-label="Map of field sites">
+        <defs><pattern id="dots" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#121212" opacity=".3"/></pattern></defs>
         <g fill="url(#dots)">
-          <path d="M60 90 Q140 40 250 70 Q320 90 300 160 Q280 210 240 230 Q220 280 250 300 L230 320 Q180 290 160 240 Q100 200 70 160 Z"/>
-          <path d="M240 300 Q300 300 320 350 Q330 420 290 460 Q260 440 255 390 Q235 340 240 300Z"/>
-          <path d="M440 90 Q520 60 600 80 Q700 60 800 90 Q880 110 900 170 Q860 210 800 200 Q760 240 720 230 Q680 200 640 210 Q600 180 560 190 Q520 170 470 170 Q440 140 440 90Z"/>
-          <path d="M450 200 Q520 190 570 220 Q600 270 580 330 Q560 400 520 420 Q490 380 480 320 Q440 270 450 200Z"/>
-          <path d="M820 330 Q880 320 900 360 Q880 400 830 390 Q810 360 820 330Z"/>
+          <path d="M60 80 Q140 30 250 60 Q320 80 300 150 Q280 200 240 220 Q220 270 250 290 L230 310 Q180 280 160 230 Q100 190 70 150 Z"/>
+          <path d="M240 290 Q300 290 320 340 Q330 410 290 440 Q260 430 255 380 Q235 330 240 290Z"/>
+          <path d="M440 80 Q520 50 600 70 Q700 50 800 80 Q880 100 900 160 Q860 200 800 190 Q760 230 720 220 Q680 190 640 200 Q600 170 560 180 Q520 160 470 160 Q440 130 440 80Z"/>
+          <path d="M450 190 Q520 180 570 210 Q600 260 580 320 Q560 390 520 410 Q490 370 480 310 Q440 260 450 190Z"/>
+          <path d="M820 320 Q880 310 900 350 Q880 390 830 380 Q810 350 820 320Z"/>
         </g>
-        <!-- route -->
-        <path d="M218 205 C 330 120, 420 110, 478 128 C 470 190, 470 230, 498 285 M478 128 C 490 260, 520 300, 550 300 M478 128 C 640 60, 790 100, 862 168 M862 168 L880 140" fill="none" stroke="#e8743b" stroke-width="2.5" stroke-dasharray="7 7"/>
-        <g font-family="Caveat" font-size="26" font-weight="700" fill="#16201b">
-          <circle cx="218" cy="205" r="9" fill="#2b7a8c"/><text x="140" y="245">Wilmington</text>
-          <circle cx="478" cy="128" r="9" fill="#1f4d3a"/><text x="430" y="112">Cambridge</text>
-          <circle cx="462" cy="172" r="9" fill="#e8743b"/><text x="370" y="180">Gibraltar</text>
-          <circle cx="498" cy="285" r="9" fill="#e8743b"/><text x="400" y="296">Tsaobis</text>
-          <circle cx="550" cy="300" r="9" fill="#e8743b"/><text x="566" y="308">Issa Valley</text>
-          <circle cx="862" cy="168" r="9" fill="#e8743b"/><text x="740" y="215">Koshima &amp; Cape Toi</text>
-          <circle cx="880" cy="140" r="9" fill="#e8743b"/><text x="840" y="120">Awajishima</text>
+        <path d="M218 195 C 330 110, 420 100, 478 118 C 470 180, 470 220, 498 275 M478 118 C 490 250, 520 290, 550 290 M478 118 C 640 50, 790 90, 862 158 M862 158 L880 130" fill="none" stroke="#d9622b" stroke-width="1.6" stroke-dasharray="5 6"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="1.2" fill="#121212">
+          <circle cx="218" cy="195" r="6" fill="#2f6f7e"/><text x="150" y="228">WILMINGTON</text>
+          <circle cx="478" cy="118" r="6" fill="#121212"/><text x="440" y="100">CAMBRIDGE</text>
+          <circle cx="462" cy="162" r="6" fill="#d9622b"/><text x="360" y="167">GIBRALTAR</text>
+          <circle cx="498" cy="275" r="6" fill="#d9622b"/><text x="410" y="280">TSAOBIS</text>
+          <circle cx="550" cy="290" r="6" fill="#d9622b"/><text x="564" y="295">ISSA VALLEY</text>
+          <circle cx="862" cy="158" r="6" fill="#d9622b"/><text x="738" y="192">KOSHIMA · CAPE TOI</text>
+          <circle cx="880" cy="130" r="6" fill="#d9622b"/><text x="830" y="112">AWAJISHIMA</text>
         </g>
       </svg>
     </div>
     <div class="sites">
-      <div class="site s-gib rv"><div class="ph"><span class="yr mono">2026 – now</span></div><div class="body"><h3>Gibraltar</h3><div class="sp">Barbary macaques</div><p>Mirror and cognition work for my PhD, University of Cambridge.</p></div></div>
-      <div class="site s-kos rv"><div class="ph"><span class="yr mono">2026</span></div><div class="body"><h3>Koshima, Japan</h3><div class="sp">Japanese macaques</div><p>Cognition experiments with the Wildlife Research Center, Kyoto University.</p></div></div>
-      <div class="site s-toi rv"><div class="ph"><span class="yr mono">2026</span></div><div class="body"><h3>Cape Toi, Japan</h3><div class="sp">Feral horses</div><p>Drone observation of horse groups with Kyoto University.</p></div></div>
-      <div class="site s-awa rv"><div class="ph"><span class="yr mono">2026</span></div><div class="body"><h3>Awajishima, Japan</h3><div class="sp">Japanese macaques</div><p>Field training for Kyoto University at the Awajishima Monkey Center.</p></div></div>
-      <div class="site s-tsa rv"><div class="ph"><span class="yr mono">Earlier</span></div><div class="body"><h3>Tsaobis, Namibia</h3><div class="sp">Chacma baboons</div><p>Grooming, trust and social bonds in a desert troop.</p></div></div>
-      <div class="site s-iss rv"><div class="ph"><span class="yr mono">Earlier</span></div><div class="body"><h3>Issa Valley, Tanzania</h3><div class="sp">Wild chimpanzees &amp; yellow baboons</div><p>Activity budgets, nesting and fire ecology.</p></div></div>
+      <figure class="site rv"><div class="ph empty"><span class="mono">Photo coming soon</span></div><figcaption><div class="cap"><h3>Gibraltar</h3><span class="yr mono">2026 –</span></div><div class="sp">Barbary macaques</div><p>Mirror and cognition research for my PhD, University of Cambridge.</p></figcaption></figure>
+      <figure class="site rv"><div class="ph"><img src="img/koshima.jpg" alt="Japanese macaques grooming, Koshima" loading="lazy"></div><figcaption><div class="cap"><h3>Koshima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Cognition experiments with the Wildlife Research Center, Kyoto University.</p></figcaption></figure>
+      <figure class="site rv"><div class="ph"><img src="img/capetoi.jpg" alt="Mare and foal, Cape Toi" loading="lazy"></div><figcaption><div class="cap"><h3>Cape Toi, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Feral horses</div><p>Drone-based observation of horse social groups with Kyoto University.</p></figcaption></figure>
+      <figure class="site rv"><div class="ph"><img src="img/awajishima.jpg" alt="Juvenile Japanese macaque above the sea, Awajishima" loading="lazy"></div><figcaption><div class="cap"><h3>Awajishima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Field training for Kyoto University at the Awajishima Monkey Center.</p></figcaption></figure>
+      <figure class="site rv"><div class="ph empty"><span class="mono">Photo coming soon</span></div><figcaption><div class="cap"><h3>Tsaobis, Namibia</h3><span class="yr mono">MSc</span></div><div class="sp">Chacma baboons</div><p>Grooming, trust and social bonds in a wild desert population.</p></figcaption></figure>
+      <figure class="site rv"><div class="ph"><img src="img/issa.jpg" alt="Young chimpanzee in a strangler fig, Issa Valley" loading="lazy"></div><figcaption><div class="cap"><h3>Issa Valley, Tanzania</h3><span class="yr mono">Earlier</span></div><div class="sp">Chimpanzees &amp; yellow baboons</div><p>Activity budgets, nesting and fire ecology in a savanna-woodland community.</p></figcaption></figure>
     </div>
   </div>
 </section>
 
 <section class="gallery" id="gallery">
   <div class="wrap">
-    <div class="label mono">From the field</div>
-    <h2 class="rv">Notes from <em>the field</em></h2>
+    <div class="head"><span class="mono">04 — Photos</span><h2 class="display rv">Field <span class="serif">notes</span></h2></div>
     <div class="wall">
-      <figure class="rv"><img src="img/gallery/handclasp-issa.jpg" alt="Handclasp, Issa" loading="lazy"><figcaption>Handclasp, Issa</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/infant-peeking-issa.jpg" alt="Peekaboo, Issa" loading="lazy"><figcaption>Peekaboo, Issa</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/selfie-koshima.jpg" alt="Upside-down selfie, Koshima" loading="lazy"><figcaption>Upside-down selfie, Koshima</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/huddle-awajishima.jpg" alt="Monkey huddle, Awajishima" loading="lazy"><figcaption>Monkey huddle, Awajishima</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/grooming-group-issa.jpg" alt="Grooming party, Issa" loading="lazy"><figcaption>Grooming party, Issa</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/team-capetoi.jpg" alt="Horse watch, Cape Toi" loading="lazy"><figcaption>Horse watch, Cape Toi</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/grooming-trio-koshima.jpg" alt="Grooming trio, Koshima" loading="lazy"><figcaption>Grooming trio, Koshima</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/silhouette-issa.jpg" alt="Canopy commute, Issa" loading="lazy"><figcaption>Canopy commute, Issa</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/scooter-awajishima.jpg" alt="Scooter thieves, Awajishima" loading="lazy"><figcaption>Scooter thieves, Awajishima</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/baboons-issa.jpg" alt="Yellow baboons, Issa" loading="lazy"><figcaption>Yellow baboons, Issa</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/weighing-koshima.jpg" alt="Weigh-in day, Koshima" loading="lazy"><figcaption>Weigh-in day, Koshima</figcaption></figure>
-      <figure class="rv"><img src="img/gallery/rotifers.jpg" alt="Where it started: rotifers" loading="lazy"><figcaption>Where it started: rotifers</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/handclasp-issa.jpg" alt="Chimpanzees in a grooming handclasp" loading="lazy"></div><figcaption class="mono">Grooming handclasp — Issa Valley</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/selfie-koshima.jpg" alt="Japanese macaque close to the camera" loading="lazy"></div><figcaption class="mono">Close company — Koshima</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/huddle-awajishima.jpg" alt="Japanese macaques huddling" loading="lazy"></div><figcaption class="mono">Huddle — Awajishima</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/silhouette-issa.jpg" alt="Chimpanzee silhouetted on a branch" loading="lazy"></div><figcaption class="mono">Canopy — Issa Valley</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/grooming-group-issa.jpg" alt="A cluster of chimpanzees grooming" loading="lazy"></div><figcaption class="mono">Grooming cluster — Issa Valley</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/grooming-trio-koshima.jpg" alt="Three Japanese macaques grooming" loading="lazy"></div><figcaption class="mono">Grooming trio — Koshima</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/team-capetoi.jpg" alt="Researchers watching horses above a bay" loading="lazy"></div><figcaption class="mono">Horse watch — Cape Toi</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/infant-peeking-issa.jpg" alt="Infant chimpanzee peeking over a branch" loading="lazy"></div><figcaption class="mono">Infant — Issa Valley</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/baboons-issa.jpg" alt="Yellow baboons grooming" loading="lazy"></div><figcaption class="mono">Yellow baboons — Issa Valley</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/weighing-koshima.jpg" alt="Macaque on a weighing scale on the beach" loading="lazy"></div><figcaption class="mono">Weighing day — Koshima</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/scooter-awajishima.jpg" alt="Macaques on a parked scooter" loading="lazy"></div><figcaption class="mono">Opportunists — Awajishima</figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/gallery/rotifers.jpg" alt="Male rotifers under darkfield microscopy" loading="lazy"></div><figcaption class="mono">Where it started — rotifers</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section class="writing" id="writing">
   <div class="wrap">
-    <div class="label mono">Writing</div>
-    <h2 class="rv">Papers <em>in the pipeline</em></h2>
+    <div class="head"><span class="mono">05 — Writing</span><h2 class="display rv">Papers</h2></div>
     <ol class="pubs">
-      <li class="rv"><div><span class="t">Grooming of vulnerable body regions and social bond strength in wild baboons</span><span class="a">Gurkin, E., et al.</span></div><span class="st mono">In prep</span></li>
-      <li class="rv"><div><span class="t">Psychiatrists' experiences with evolutionary frameworks in clinical practice</span><span class="a">Gillett, G., Gurkin, E., et al.</span></div><span class="st mono">In prep</span></li>
-      <li class="rv"><div><span class="t">Levinas and primatology</span><span class="a">Gurkin, E.</span></div><span class="st mono">Under review</span></li>
+      <li class="rv"><span class="yr mono">Forthcoming</span><div><span class="t">Grooming of vulnerable body regions and social bond strength in wild chacma baboons</span><span class="a"><b>Gurkin, E.</b>, et al.</span></div><span class="st mono">In prep</span></li>
+      <li class="rv"><span class="yr mono">Forthcoming</span><div><span class="t">Psychiatrists' experiences and views on evolutionary perspectives in clinical practice</span><span class="a">Gillett, G., <b>Gurkin, E.</b>, et al.</span></div><span class="st mono">In prep</span></li>
+      <li class="rv"><span class="yr mono">Forthcoming</span><div><span class="t">Levinas and primatology</span><span class="a"><b>Gurkin, E.</b></span></div><span class="st mono">Under review</span></li>
     </ol>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="wrap">
-   <div class="grid">
-    <div class="pol rv"><div class="tape"></div><div class="ph"></div><div class="cap">psst… over here</div></div>
-    <div>
-    <h2 class="rv">Let's <em>talk.</em></h2>
-    <p>Always happy to hear from people working on primate behaviour, comparative cognition or evolutionary approaches to mental health.</p>
+    <span class="mono">06 — Contact</span>
+    <h2 class="display rv">Get in <span class="serif">touch</span></h2>
+    <p>I'm always glad to hear from people working on primate behaviour, comparative cognition or evolutionary approaches to mental health.</p>
     <div class="btns">
-      <a class="btn dark" href="mailto:evangurkin@hotmail.com">evangurkin@hotmail.com</a>
-      <a class="btn" href="cv.pdf">Download CV</a>
+      <a class="btn solid" href="mailto:evangurkin@hotmail.com">Email me</a>
+      <a class="btn" href="cv.pdf">CV</a>
       <a class="btn" href="#">Google Scholar</a>
       <a class="btn" href="#">ORCID</a>
     </div>
-    <div class="addr">Darwin College, Silver Street, Cambridge CB3 9EU, UK</div>
-    </div>
-   </div>
+    <div class="addr mono">Darwin College · Silver Street · Cambridge CB3 9EU</div>
   </div>
 </section>
 
-<footer><span>© 2026 Evan Gurkin</span><span class="hand" style="font-size:1.3rem">made between field seasons ✦</span></footer>
+<footer>
+  <div class="sunline"></div>
+  <div class="wrap mono"><span>© 2026 Evan Gurkin</span><span>Cambridge, UK · Wilmington, NC</span></div>
+</footer>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const bar=document.getElementById('bar');
+const onScroll=()=>bar.classList.toggle('solid',window.scrollY>window.innerHeight-80);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
 </script>
 </body>
 </html>
