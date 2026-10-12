@@ -10,62 +10,83 @@
 <meta property="og:image" content="https://evangurkin.com/img/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f5f2ec; --bg-2:#ebe6dc; --ink:#121212; --ink-2:#3a3a38; --muted:#77736b; --line:#d6d0c4;
-  --sun:#d9622b; --sand:#e8cfa3; --sea:#2f6f7e;
+  color-scheme:dark;
+  --bg:#0c0c0b; --bg-2:#151513; --bg-3:#1d1d1a; --ink:#ece8e0; --ink-2:#bdb8ae; --muted:#86827a; --line:#2c2b27;
+  --sun:#e0703a; --sand:#e8cfa3; --sea:#5d9aa8;
   --pad:clamp(16px,4vw,48px);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.65 "Archivo",system-ui,sans-serif;font-stretch:100%;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.65 "Archivo",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* film grain over everything */
+body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.09;animation:grain 1.2s steps(4) infinite;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
 img{display:block;max-width:100%}
 a{color:inherit}
 .wrap{max-width:1320px;margin:0 auto;padding:0 var(--pad)}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
-.display{font-family:"Archivo",sans-serif;font-stretch:72%;font-variation-settings:"wdth" 72;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.9}
-.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+.display{font-family:"Archivo",sans-serif;font-stretch:72%;font-variation-settings:"wdth" 72;font-weight:800;letter-spacing:-.015em;line-height:.92}
+.script{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;color:var(--sand);font-size:1.08em;font-stretch:100%;font-variation-settings:normal}
+.arrow{display:inline-flex;align-items:center;gap:.5em;text-decoration:none;font-weight:600;border-bottom:1px solid currentColor;padding-bottom:2px}
+.arrow::after{content:"→";transition:transform .25s}
+.arrow:hover::after{transform:translateX(5px)}
+.arrow:hover{color:var(--sun)}
+
+/* photos: muted, colour returns on hover / when in view on touch */
+.tone img,.tone .bgph,.tone.bgph{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 
 /* NAV */
-header.bar{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,color .3s,border-color .3s;color:#fff;border-bottom:1px solid transparent}
-header.bar.solid{background:rgba(245,242,236,.92);backdrop-filter:blur(10px);color:var(--ink);border-color:var(--line)}
+header.bar{position:fixed;inset:0 0 auto 0;padding-top:env(safe-area-inset-top,0px);z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.bar.solid{background:rgba(12,12,11,.86);backdrop-filter:blur(10px);border-color:var(--line)}
 .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
-.brand{font-stretch:80%;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-size:.95rem;white-space:nowrap}
-.bar nav{display:flex;gap:28px}
-.bar nav a{text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.85;white-space:nowrap}
-.bar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.brand{font-stretch:80%;font-variation-settings:"wdth" 80;font-weight:800;letter-spacing:.04em;text-decoration:none;font-size:1rem;white-space:nowrap}
+.bar nav{display:flex;gap:26px}
+.bar nav a{text-decoration:none;font-size:.86rem;font-weight:500;opacity:.8;white-space:nowrap;position:relative}
+.bar nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--sun);transition:right .3s}
+.bar nav a:hover{opacity:1}.bar nav a:hover::after{right:0}
 
 /* HERO */
-.hero{position:relative;height:100svh;min-height:620px;color:#fff;overflow:hidden;background:#20261f url(img/hero.jpg) center 40%/cover;padding:0}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 50%,rgba(0,0,0,.7) 100%),linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,0) 55%)}
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden;padding:0;background:#111}
+.hero .bg{position:absolute;inset:-4%;background:url(img/hero.jpg) center 40%/cover;filter:brightness(.92);transform:scale(1.04)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 45%,rgba(12,12,11,.95) 100%)}
 .hero .inner{position:absolute;inset:auto 0 0 0;z-index:2;padding-bottom:clamp(28px,6vh,64px)}
-.hero h1{font-size:clamp(4rem,15vw,13.5rem);margin:0}
-.hero .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:22px;border-top:1px solid rgba(255,255,255,.4);padding-top:18px}
-.hero .tag{font-size:clamp(1.05rem,1.7vw,1.35rem);max-width:34em;margin:0;font-weight:400}
-.hero .tag .serif{font-size:1.2em}
-.hero .meta{text-align:right;opacity:.9;line-height:1.9}
+.hero h1{font-size:clamp(4rem,14vw,12.5rem);margin:0}
+.hero .row{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-top:24px;border-top:1px solid rgba(255,255,255,.25);padding-top:18px}
+.hero .tag{font-size:clamp(1.1rem,1.8vw,1.4rem);max-width:30em;margin:0}
+.hero .meta{text-align:right;color:var(--ink-2);line-height:1.9}
 
 /* TICKER */
-.ticker{background:var(--ink);color:var(--bg);overflow:hidden;white-space:nowrap}
-.ticker .track{display:inline-block;padding:13px 0;animation:slide 50s linear infinite}
+.ticker{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;color:var(--ink-2)}
+.ticker .track{display:inline-block;padding:14px 0;animation:slide 55s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
 .ticker span{margin:0 22px}
 .ticker i{font-style:normal;color:var(--sun)}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* SECTIONS */
-section{padding:clamp(80px,11vw,150px) 0}
-.head{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:baseline;margin-bottom:clamp(40px,5vw,64px)}
-.head .mono{color:var(--muted)}
-.head h2{font-size:clamp(2.6rem,7vw,5.6rem);margin:0}
-.head h2 .serif{font-size:1.06em;color:var(--sun)}
+section{padding:clamp(84px,11vw,150px) 0}
+.head{display:grid;grid-template-columns:200px 1fr auto;gap:24px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.head .mono{color:var(--muted);align-self:baseline}
+.head h2{font-size:clamp(2.8rem,7vw,5.8rem);margin:0}
 
 /* ABOUT */
 .about .grid{display:grid;grid-template-columns:200px 1fr 1fr;gap:24px}
 .about .copy p{margin:0 0 18px;max-width:33em;color:var(--ink-2)}
 .about .copy p.lead{font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.4;color:var(--ink)}
 .about figure{margin:0}
-.about figure .ph{aspect-ratio:4/5;background:#ccc url(img/me.jpg) 30% 30%/cover}
+.about .pics{display:grid;gap:28px;align-content:start}
+.about .small{width:62%;justify-self:end;margin-top:-90px;position:relative;z-index:2;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.about .small .frame{aspect-ratio:4/5;overflow:hidden;border:6px solid var(--bg)}
+.about .small img{width:100%;height:100%;object-fit:cover}
+.about .small figcaption{padding-left:6px}
+.about .pics figure:hover img,.about .pics figure:hover .bgph{transform:scale(1.04)}
+.about figure .frame{aspect-ratio:4/5;overflow:hidden}
+.about figure .bgph{width:100%;height:100%;background:#333 url(img/me.jpg) 30% 30%/cover}
+.about figure:hover .bgph{transform:scale(1.03)}
 figcaption{margin-top:10px;color:var(--muted)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px;border-top:1px solid var(--ink)}
 .stats div{padding:16px 16px 0 0}
@@ -74,93 +95,133 @@ figcaption{margin-top:10px;color:var(--muted)}
 
 /* RESEARCH */
 .research{background:var(--bg-2)}
-.themes{display:grid;grid-template-columns:repeat(2,1fr);gap:48px 24px}
+.themes{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 24px}
 .theme{margin:0}
-.theme .ph{position:relative;aspect-ratio:4/3;background:var(--ink);overflow:hidden}
-.theme .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.theme .ph{position:relative;aspect-ratio:4/3;background:#000;overflow:hidden}
+.theme .ph img{width:100%;height:100%;object-fit:cover}
 .theme:hover .ph img{transform:scale(1.04)}
-.theme .ph.empty{display:grid;place-items:center;background:linear-gradient(160deg,#3d6f7b,#1d3c44);color:rgba(255,255,255,.75)}
+.theme .ph.empty{display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#2a2a26,#121210);color:var(--muted)}
+.theme .ph.empty .script{font-size:3rem;line-height:1;color:var(--ink-2)}
+.theme .ph .credit{left:auto}
 .theme .ph .n{position:absolute;top:16px;left:16px;color:#fff}
-.theme .txt{display:grid;grid-template-columns:1fr auto;gap:6px 24px;padding-top:16px;border-top:1px solid var(--ink);margin-top:16px}
-.theme h3{font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:800;text-transform:uppercase;font-size:clamp(1.4rem,2.2vw,1.9rem);line-height:1;margin:0}
+.theme .txt{display:grid;grid-template-columns:1fr auto;gap:6px 24px;padding-top:16px;border-top:1px solid var(--line);margin-top:16px}
+.theme h3{font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:800;font-size:clamp(1.5rem,2.3vw,2rem);line-height:1;margin:0}
 .theme .where{color:var(--muted);text-align:right;white-space:nowrap}
 .theme p{grid-column:1/-1;margin:6px 0 0;color:var(--ink-2);max-width:36em}
 
 /* FIELD */
-.map{border:1px solid var(--ink);padding:clamp(12px,2vw,28px);margin-bottom:clamp(40px,5vw,72px)}
+.map{border:1px solid var(--line);padding:clamp(12px,2vw,28px);margin-bottom:clamp(40px,5vw,72px);background:var(--bg-2);position:relative}
 .map svg{width:100%;height:auto;display:block}
+.map .pin{cursor:pointer}
+.map .pin circle.halo{fill:var(--sun);opacity:0;transition:opacity .3s,r .3s}
+.map .pin:hover circle.halo{opacity:.25}
+.map .pin text{transition:fill .2s}
+.map .pin:hover text{fill:var(--sun)}
 .sites{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 24px}
-.site{margin:0}
-.site .ph{aspect-ratio:1/1;overflow:hidden;background:var(--bg-2)}
-.site .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.site{margin:0;scroll-margin-top:90px}
+.site .ph{aspect-ratio:1/1;overflow:hidden;background:var(--bg-2);position:relative}
+.credit{position:absolute;right:8px;bottom:8px;font-size:.6rem!important;color:#fff;background:rgba(0,0,0,.45);padding:2px 6px;letter-spacing:.04em!important}
+.site .ph img{width:100%;height:100%;object-fit:cover}
 .site:hover .ph img{transform:scale(1.04)}
-.site .ph.empty{display:grid;place-items:center;color:var(--muted);border:1px dashed #bdb6a8}
-.site figcaption{color:var(--ink)}
-.site .cap{display:flex;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--ink)}
-.site h3{margin:0;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.site .ph.empty{display:grid;place-items:center;border:1px dashed var(--line)}
+.site .ph.empty .script{font-size:2.4rem;line-height:1;color:var(--muted)}
+.site.flash .ph{outline:2px solid var(--sun);outline-offset:4px}
+.site .cap{display:flex;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
+.site h3{margin:0;font-size:1.05rem;font-weight:700}
 .site .yr{color:var(--muted);white-space:nowrap}
-.site .sp{color:var(--sun);font-size:.92rem;font-weight:600;margin-top:2px}
+.site .sp{color:var(--sun);font-size:.92rem;font-weight:500;margin-top:2px}
 .site p{margin:4px 0 0;color:var(--ink-2);font-size:.95rem}
 
-/* GALLERY */
-.gallery{background:var(--ink);color:var(--bg)}
-.gallery .head .mono{color:#9a968e}
-.wall{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 16px}
-.wall figure{margin:0}
-.wall .ph{aspect-ratio:4/5;overflow:hidden;background:#222}
-.wall img{width:100%;height:100%;object-fit:cover;filter:saturate(.9);transition:filter .4s,transform 1s}
-.wall figure:hover img{filter:none;transform:scale(1.03)}
-.wall figcaption{color:#a5a196}
+/* GALLERY: draggable film strip */
+.gallery{padding-bottom:clamp(60px,8vw,110px)}
+.strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding:0 var(--pad) 18px;cursor:grab;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.strip.drag{cursor:grabbing;scroll-snap-type:none}
+.strip.drag *{pointer-events:none}
+.strip figure{flex:0 0 auto;margin:0;scroll-snap-align:start;width:clamp(220px,24vw,340px)}
+.strip figure.w{width:clamp(300px,36vw,520px)}
+.strip .ph{height:clamp(300px,34vw,460px);overflow:hidden;background:#1a1a18}
+.strip img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
+.strip figure:hover img{transform:scale(1.03)}
+.strip figcaption{display:flex;justify-content:space-between;gap:10px}
+.hint{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;color:var(--muted)}
+.hint .ctrl button{background:none;border:1px solid var(--line);color:var(--ink);width:42px;height:42px;font-size:1.1rem;cursor:pointer;transition:border-color .2s,color .2s}
+.hint .ctrl button:hover{border-color:var(--sun);color:var(--sun)}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(5,5,5,.94);display:none;align-items:center;justify-content:center;padding:4vw;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:82vh;object-fit:contain}
+.lb p{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:var(--ink-2)}
 
 /* WRITING */
-.pubs{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
-.pubs li{display:grid;grid-template-columns:200px 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
+.writing{background:var(--bg-2)}
+.pubs{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.pubs li{display:grid;grid-template-columns:200px 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .3s}
+.pubs li:hover{padding-left:10px}
 .pubs .yr{color:var(--muted)}
 .pubs .t{font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.3;font-weight:500}
 .pubs .a{display:block;color:var(--muted);font-size:.95rem;margin-top:4px}
 .pubs .a b{color:var(--ink);font-weight:600}
-.pubs .st{border:1px solid var(--ink);padding:5px 12px;white-space:nowrap}
+.pubs details{margin-top:10px;color:var(--ink-2)}
+.pubs summary{cursor:pointer;color:var(--sun);list-style:none;display:inline-flex;gap:.5em}
+.pubs summary::-webkit-details-marker{display:none}
+.pubs summary::before{content:"+";transition:transform .25s}
+.pubs details[open] summary::before{transform:rotate(45deg)}
+.pubs details p{max-width:44em;margin:8px 0 0;font-size:.98rem}
+.pubs a.plain{text-decoration:none;display:block}.pubs a.plain:hover{color:var(--sun)}
+.writing .sub{color:var(--muted);margin:56px 0 0;font-weight:500}
+.pubs .st{border:1px solid var(--line);padding:5px 12px;white-space:nowrap;color:var(--ink-2)}
+.writing .more{margin-top:32px}
 
 /* CONTACT */
-.contact{position:relative;color:#fff;background:#1a1a1a url(img/contact.jpg) 60% 40%/cover;padding:0}
-.contact::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.15) 100%)}
-.contact .wrap{position:relative;min-height:80svh;display:flex;flex-direction:column;justify-content:center;padding-top:110px;padding-bottom:110px}
-.contact h2{font-size:clamp(3.4rem,11vw,9rem);margin:14px 0 22px}
-.contact h2 .serif{color:var(--sand)}
-.contact p{font-size:1.15rem;max-width:30em;margin:0 0 34px;opacity:.92}
+.contact{position:relative;padding:0;overflow:hidden}
+.contact .bgph{position:absolute;inset:0;background:#111 url(img/contact.jpg) 60% 40%/cover}
+.contact::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,8,8,.9) 0%,rgba(8,8,8,.6) 50%,rgba(8,8,8,.15) 100%);pointer-events:none}
+.contact .wrap{position:relative;z-index:2;min-height:82svh;display:flex;flex-direction:column;justify-content:center;padding-top:110px;padding-bottom:110px}
+.contact h2{font-size:clamp(3.4rem,10vw,8.5rem);margin:14px 0 22px}
+.contact p{font-size:1.15rem;max-width:30em;margin:0 0 34px;color:var(--ink-2)}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:14px 22px;border:1px solid #fff;text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s}
-.btn:hover,.btn.solid{background:#fff;color:var(--ink)}
+.btn{display:inline-flex;gap:.6em;padding:14px 22px;border:1px solid rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;font-weight:600;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:#fff;color:#111}
+.btn.solid{background:var(--ink);color:#111;border-color:var(--ink)}
+.btn.solid::after{content:"→"}
 .btn.solid:hover{background:var(--sun);border-color:var(--sun);color:#fff}
-.contact .addr{margin-top:44px;opacity:.75}
+.contact .addr{margin-top:44px;color:var(--muted)}
 
-footer .sunline{height:4px;background:linear-gradient(90deg,var(--sea),var(--sand) 45%,var(--sun))}
+footer .sunline{height:3px;background:linear-gradient(90deg,var(--sea),var(--sand) 45%,var(--sun))}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px;color:var(--muted)}
+footer .script{font-size:1.15rem;line-height:1;text-transform:none}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.ticker .track{animation:none}}
+.rv{transition:opacity .9s ease,transform .9s ease}
+.anim .rv:not(.in){opacity:0;transform:translateY(24px)}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.ticker .track,body::after{animation:none}}
 
 @media (max-width:980px){
-  .head{grid-template-columns:1fr;gap:10px}
+  .head{grid-template-columns:1fr;gap:10px}.head .arrow{justify-self:start}
   .about .grid{grid-template-columns:1.2fr 1fr}.about .spacer{display:none}
   .sites{grid-template-columns:repeat(2,1fr)}
-  .wall{grid-template-columns:repeat(3,1fr)}
   .pubs li{grid-template-columns:130px 1fr auto}
 }
 @media (max-width:680px){
-  .bar nav{gap:14px}.bar nav a{font-size:.68rem;letter-spacing:.05em}.bar nav a.hide-s{display:none}
-  .brand{font-size:.82rem}
-  .hero{background-position:80% center}
-  .hero .meta{text-align:left}
-  .about .grid{grid-template-columns:1fr}.about figure{order:-1}
+  .bar nav{gap:14px}.bar nav a{font-size:.76rem}.bar nav a.hide-s{display:none}
+  .brand{font-size:.88rem}
+  .hero .bg{background-position:80% center}
+  .hero .row{grid-template-columns:1fr}.hero .meta{text-align:left}
+  .about .grid{grid-template-columns:1fr}.about .pics{order:-1}.about .pics>figure:first-child figcaption{width:34%}.about .small{margin-top:-120px}
   .themes{grid-template-columns:1fr}
   .sites{grid-template-columns:1fr 1fr;gap:28px 14px}
   .site p{display:none}
-  .wall{grid-template-columns:1fr 1fr;gap:20px 10px}
-  .pubs li{grid-template-columns:1fr;gap:8px}.pubs .st{justify-self:start}
-  .contact::before{background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.82))}
+  .pubs li{grid-template-columns:1fr;gap:8px}.pubs details{margin-top:10px;color:var(--ink-2)}
+.pubs summary{cursor:pointer;color:var(--sun);list-style:none;display:inline-flex;gap:.5em}
+.pubs summary::-webkit-details-marker{display:none}
+.pubs summary::before{content:"+";transition:transform .25s}
+.pubs details[open] summary::before{transform:rotate(45deg)}
+.pubs details p{max-width:44em;margin:8px 0 0;font-size:.98rem}
+.pubs a.plain{text-decoration:none;display:block}.pubs a.plain:hover{color:var(--sun)}
+.writing .sub{color:var(--muted);margin:56px 0 0;font-weight:500}
+.pubs .st{justify-self:start}
+  .contact::before{background:linear-gradient(180deg,rgba(8,8,8,.35),rgba(8,8,8,.9))}
+  .hint .ctrl{display:none}
 }
 </style>
 </head>
@@ -176,11 +237,12 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 </header>
 
 <section class="hero" id="top" aria-label="Introduction">
+  <div class="bg" id="heroBg"></div>
   <div class="wrap inner">
     <h1 class="display">Evan<br>Gurkin</h1>
     <div class="row">
-      <p class="tag">Primate behaviour, cognition and the <span class="serif">evolutionary roots</span> of mental health.</p>
-      <div class="meta mono">PhD Student · University of Cambridge<br>Cambridge, UK — Wilmington, NC</div>
+      <p class="tag">Primate behaviour, cognition and the <span class="script">evolutionary roots</span> of mental health.</p>
+      <div class="meta mono">PhD Student · University of Cambridge<br>Cambridge, UK · Carolina Beach, NC</div>
     </div>
   </div>
 </section>
@@ -192,44 +254,48 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 
 <section class="about" id="about">
   <div class="wrap">
-    <div class="head"><span class="mono">01 — About</span><h2 class="display rv">Field <span class="serif">to</span> clinic</h2></div>
+    <div class="head"><span class="mono">01 — About</span><h2 class="display rv">Field <span class="script">to</span> clinic</h2></div>
     <div class="grid">
       <div class="spacer"></div>
       <div class="copy rv">
-        <p class="lead">I'm a PhD student in Biological Anthropology at Darwin College, Cambridge, supervised by Dr Sylvain Lemoine.</p>
-        <p>I study how primates think and how they build relationships, and what that comparative work can tell us about human mental health. I grew up around community mental health care, and that question has followed me into the field, from chimpanzees in western Tanzania to macaques in Japan and Gibraltar.</p>
-        <p>Before Cambridge I completed an MSc in Human Evolution and Behaviour at UCL (Distinction) and a BA at UNC Chapel Hill. I've also worked as an EMT and a surf instructor. Home is Wilmington, North Carolina.</p>
+        <p class="lead">I'm a PhD student in Biological Anthropology at Darwin College, Cambridge, studying how primates think, how they build relationships, and what that can tell us about human mental health.</p>
+        <p>My interest in mental health started long before primatology. I grew up working in community mental health, including on an Assertive Community Treatment Team (ACTT), which supports people living with serious mental illness in their homes and communities. That work showed me how much relationships, stress and isolation shape a person's wellbeing, and those questions have followed me into the field.</p>
+        <p>Since then I've studied chimpanzees in western Tanzania, baboons in Namibia and macaques in Japan and Gibraltar, looking at how other primates form bonds, regulate their behaviour and cope with social life.</p>
+        <p>I hold an MSc in Human Evolution and Behaviour from UCL (Distinction) and a BSc from UNC Chapel Hill, where I studied biology, psychology and chemistry. Before academia I worked as an EMT and taught surfing back home in Carolina Beach, North Carolina.</p>
         <div class="stats">
-          <div><b>6</b><span class="mono">Species in the field</span></div>
-          <div><b>4</b><span class="mono">Countries</span></div>
-          <div><b>583</b><span class="mono">Hours of baboon video coded</span></div>
+          <div><b data-count="6">6</b><span class="mono">Species in the field</span></div>
+          <div><b data-count="4">4</b><span class="mono">Countries</span></div>
+          <div><b data-count="3">3</b><span class="mono">Continents</span></div>
         </div>
       </div>
-      <figure class="rv"><div class="ph" role="img" aria-label="Evan with a feral horse at Cape Toi, Japan"></div><figcaption class="mono">Cape Toi, Japan</figcaption></figure>
+      <div class="pics rv">
+        <figure class="tone"><div class="frame"><div class="bgph" role="img" aria-label="Evan with a feral horse at Cape Toi, Japan"></div></div><figcaption class="mono">Cape Toi, Japan</figcaption></figure>
+        <figure class="tone small"><div class="frame"><img src="img/ev-surfing.jpg" alt="Evan surfing on a foggy day"></div><figcaption class="mono">Off duty</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="research" id="research">
   <div class="wrap">
-    <div class="head"><span class="mono">02 — Research</span><h2 class="display rv">Current <span class="serif">work</span></h2></div>
+    <div class="head"><span class="mono">02 — Research</span><h2 class="display rv">Current <span class="script">work</span></h2><a class="arrow mono" href="#writing">Papers</a></div>
     <div class="themes">
-      <article class="theme rv">
-        <div class="ph empty"><span class="n mono">01</span><span class="mono">Photo coming soon</span></div>
+      <article class="theme rv tone">
+        <div class="ph"><img src="img/gibraltar.jpg" alt="The Rock of Gibraltar at sunset"><span class="n mono">01</span></div>
         <div class="txt"><h3>Mirrors &amp; self-directed behaviour</h3><span class="where mono">Gibraltar</span>
         <p>How Barbary macaques explore and use mirrors and reflective surfaces. The core project of my PhD.</p></div>
       </article>
-      <article class="theme rv">
+      <article class="theme rv tone">
         <div class="ph"><img src="img/research-cylinder.jpg" alt="Evan running the cylinder task with a Japanese macaque" style="object-position:center 40%"><span class="n mono">02</span></div>
         <div class="txt"><h3>Inhibitory control</h3><span class="where mono">Koshima, Japan</span>
         <p>A multi-site replication of the cylinder task with Japanese macaques, testing how self-control varies with sex and dominance rank.</p></div>
       </article>
-      <article class="theme rv">
-        <div class="ph"><img src="img/research-grooming.jpg" alt="Two chimpanzees grooming above the Issa Valley"><span class="n mono">03</span></div>
+      <article class="theme rv tone">
+        <div class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg/1280px-Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg" alt="Chacma baboons grooming, with an infant"><span class="n mono">03</span><span class="credit mono">Photo: Bernard Dupont, CC BY-SA 2.0</span></div>
         <div class="txt"><h3>Social bonds &amp; trust</h3><span class="where mono">Tsaobis, Namibia</span>
-        <p>Whether grooming of vulnerable body regions reflects the strength of the bond between partners, drawing on 583 hours of video of wild chacma baboons.</p></div>
+        <p>Whether grooming of vulnerable body regions reflects the strength of the bond between partners, using video of 199 grooming bouts across 42 pairs of wild chacma baboons at Tsaobis Nature Park.</p></div>
       </article>
-      <article class="theme rv">
+      <article class="theme rv tone">
         <div class="ph"><img src="img/research-mother.jpg" alt="Chimpanzee mother and juvenile feeding, Issa Valley" style="object-position:center 35%"><span class="n mono">04</span></div>
         <div class="txt"><h3>Evolutionary psychiatry</h3><span class="where mono">UK &amp; comparative</span>
         <p>Focus groups with UK psychiatrists on how evolutionary frameworks are used in clinical practice, alongside comparative work on adolescence, cultural transmission and social isolation.</p></div>
@@ -240,10 +306,10 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 
 <section class="field" id="field">
   <div class="wrap">
-    <div class="head"><span class="mono">03 — Fieldwork</span><h2 class="display rv">Field <span class="serif">sites</span></h2></div>
+    <div class="head"><span class="mono">03 — Fieldwork</span><h2 class="display rv">Field <span class="script">sites</span></h2><span class="mono" style="color:var(--muted)">Tap a pin</span></div>
     <div class="map rv">
       <svg viewBox="0 0 1000 440" role="img" aria-label="Map of field sites">
-        <defs><pattern id="dots" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#121212" opacity=".3"/></pattern></defs>
+        <defs><pattern id="dots" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#ece8e0" opacity=".22"/></pattern></defs>
         <g fill="url(#dots)">
           <path d="M60 80 Q140 30 250 60 Q320 80 300 150 Q280 200 240 220 Q220 270 250 290 L230 310 Q180 280 160 230 Q100 190 70 150 Z"/>
           <path d="M240 290 Q300 290 320 340 Q330 410 290 440 Q260 430 255 380 Q235 330 240 290Z"/>
@@ -251,67 +317,78 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
           <path d="M450 190 Q520 180 570 210 Q600 260 580 320 Q560 390 520 410 Q490 370 480 310 Q440 260 450 190Z"/>
           <path d="M820 320 Q880 310 900 350 Q880 390 830 380 Q810 350 820 320Z"/>
         </g>
-        <path d="M218 195 C 330 110, 420 100, 478 118 C 470 180, 470 220, 498 275 M478 118 C 490 250, 520 290, 550 290 M478 118 C 640 50, 790 90, 862 158 M862 158 L880 130" fill="none" stroke="#d9622b" stroke-width="1.6" stroke-dasharray="5 6"/>
-        <g font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="1.2" fill="#121212">
-          <circle cx="218" cy="195" r="6" fill="#2f6f7e"/><text x="150" y="228">WILMINGTON</text>
-          <circle cx="478" cy="118" r="6" fill="#121212"/><text x="440" y="100">CAMBRIDGE</text>
-          <circle cx="462" cy="162" r="6" fill="#d9622b"/><text x="360" y="167">GIBRALTAR</text>
-          <circle cx="498" cy="275" r="6" fill="#d9622b"/><text x="410" y="280">TSAOBIS</text>
-          <circle cx="550" cy="290" r="6" fill="#d9622b"/><text x="564" y="295">ISSA VALLEY</text>
-          <circle cx="862" cy="158" r="6" fill="#d9622b"/><text x="738" y="192">KOSHIMA · CAPE TOI</text>
-          <circle cx="880" cy="130" r="6" fill="#d9622b"/><text x="830" y="112">AWAJISHIMA</text>
+        <path id="route" d="M218 195 C 330 110, 420 100, 478 118 C 470 180, 470 220, 498 275 M478 118 C 490 250, 520 290, 550 290 M478 118 C 640 50, 790 90, 862 158 M862 158 L880 130" fill="none" stroke="#e0703a" stroke-width="1.6" stroke-dasharray="5 6"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="1.2" fill="#ece8e0">
+          <g><circle cx="218" cy="195" r="6" fill="#5d9aa8"/><text x="130" y="228">CAROLINA BEACH</text></g>
+          <g><circle cx="478" cy="118" r="6" fill="#ece8e0"/><text x="440" y="100">CAMBRIDGE</text></g>
+          <g class="pin" data-site="s-gib"><circle class="halo" cx="462" cy="162" r="18"/><circle cx="462" cy="162" r="6" fill="#e0703a"/><text x="360" y="167">GIBRALTAR</text></g>
+          <g class="pin" data-site="s-tsa"><circle class="halo" cx="498" cy="275" r="18"/><circle cx="498" cy="275" r="6" fill="#e0703a"/><text x="410" y="280">TSAOBIS</text></g>
+          <g class="pin" data-site="s-iss"><circle class="halo" cx="550" cy="290" r="18"/><circle cx="550" cy="290" r="6" fill="#e0703a"/><text x="564" y="295">ISSA VALLEY</text></g>
+          <g class="pin" data-site="s-kos"><circle class="halo" cx="862" cy="158" r="18"/><circle cx="862" cy="158" r="6" fill="#e0703a"/><text x="738" y="192">KOSHIMA · CAPE TOI</text></g>
+          <g class="pin" data-site="s-awa"><circle class="halo" cx="880" cy="130" r="18"/><circle cx="880" cy="130" r="6" fill="#e0703a"/><text x="830" y="112">AWAJISHIMA</text></g>
         </g>
       </svg>
     </div>
     <div class="sites">
-      <figure class="site rv"><div class="ph empty"><span class="mono">Photo coming soon</span></div><figcaption><div class="cap"><h3>Gibraltar</h3><span class="yr mono">2026 –</span></div><div class="sp">Barbary macaques</div><p>Mirror and cognition research for my PhD, University of Cambridge.</p></figcaption></figure>
-      <figure class="site rv"><div class="ph"><img src="img/koshima.jpg" alt="Japanese macaques grooming, Koshima" loading="lazy"></div><figcaption><div class="cap"><h3>Koshima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Cognition experiments with the Wildlife Research Center, Kyoto University.</p></figcaption></figure>
-      <figure class="site rv"><div class="ph"><img src="img/capetoi.jpg" alt="Mare and foal, Cape Toi" loading="lazy"></div><figcaption><div class="cap"><h3>Cape Toi, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Feral horses</div><p>Drone-based observation of horse social groups with Kyoto University.</p></figcaption></figure>
-      <figure class="site rv"><div class="ph"><img src="img/awajishima.jpg" alt="Juvenile Japanese macaque above the sea, Awajishima" loading="lazy"></div><figcaption><div class="cap"><h3>Awajishima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Field training for Kyoto University at the Awajishima Monkey Center.</p></figcaption></figure>
-      <figure class="site rv"><div class="ph empty"><span class="mono">Photo coming soon</span></div><figcaption><div class="cap"><h3>Tsaobis, Namibia</h3><span class="yr mono">MSc</span></div><div class="sp">Chacma baboons</div><p>Grooming, trust and social bonds in a wild desert population.</p></figcaption></figure>
-      <figure class="site rv"><div class="ph"><img src="img/issa.jpg" alt="Young chimpanzee in a strangler fig, Issa Valley" loading="lazy"></div><figcaption><div class="cap"><h3>Issa Valley, Tanzania</h3><span class="yr mono">Earlier</span></div><div class="sp">Chimpanzees &amp; yellow baboons</div><p>Activity budgets, nesting and fire ecology in a savanna-woodland community.</p></figcaption></figure>
+      <figure class="site rv tone" id="s-gib"><div class="ph"><img src="img/gibraltar.jpg" alt="The Rock of Gibraltar at sunset" loading="lazy" style="object-position:40% center"></div><figcaption><div class="cap"><h3>Gibraltar</h3><span class="yr mono">2026 –</span></div><div class="sp">Barbary macaques</div><p>Mirror and cognition research for my PhD, University of Cambridge.</p></figcaption></figure>
+      <figure class="site rv tone" id="s-kos"><div class="ph"><img src="img/koshima-beach.jpg" alt="Evan on the beach with Japanese macaques, Koshima" loading="lazy"></div><figcaption><div class="cap"><h3>Koshima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Cognition experiments with the Wildlife Research Center, Kyoto University.</p></figcaption></figure>
+      <figure class="site rv tone" id="s-toi"><div class="ph"><img src="img/capetoi.jpg" alt="Mare and foal, Cape Toi" loading="lazy"></div><figcaption><div class="cap"><h3>Cape Toi, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Feral horses</div><p>Drone-based observation of horse social groups with Kyoto University.</p></figcaption></figure>
+      <figure class="site rv tone" id="s-awa"><div class="ph"><img src="img/awajishima.jpg" alt="Juvenile Japanese macaque above the sea, Awajishima" loading="lazy"></div><figcaption><div class="cap"><h3>Awajishima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Field training for Kyoto University at the Awajishima Monkey Center.</p></figcaption></figure>
+      <figure class="site rv tone" id="s-tsa"><div class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg/1280px-Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg" alt="Chacma baboons grooming" loading="lazy" style="object-position:30% center"><span class="credit mono">Photo: B. Dupont, CC BY-SA 2.0</span></div><figcaption><div class="cap"><h3>Tsaobis, Namibia</h3><span class="yr mono">MSc</span></div><div class="sp">Chacma baboons</div><p>Grooming, trust and social bonds in a wild desert population.</p></figcaption></figure>
+      <figure class="site rv tone" id="s-iss"><div class="ph"><img src="img/issa.jpg" alt="Young chimpanzee in a strangler fig, Issa Valley" loading="lazy"></div><figcaption><div class="cap"><h3>Issa Valley, Tanzania</h3><span class="yr mono">Earlier</span></div><div class="sp">Chimpanzees &amp; yellow baboons</div><p>Chimpanzee nesting: whether nest orientation helps chimpanzees avoid the wind, across 178 nests.</p></figcaption></figure>
     </div>
   </div>
 </section>
 
 <section class="gallery" id="gallery">
   <div class="wrap">
-    <div class="head"><span class="mono">04 — Photos</span><h2 class="display rv">Field <span class="serif">notes</span></h2></div>
-    <div class="wall">
-      <figure class="rv"><div class="ph"><img src="img/gallery/handclasp-issa.jpg" alt="Chimpanzees in a grooming handclasp" loading="lazy"></div><figcaption class="mono">Grooming handclasp — Issa Valley</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/selfie-koshima.jpg" alt="Japanese macaque close to the camera" loading="lazy"></div><figcaption class="mono">Close company — Koshima</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/huddle-awajishima.jpg" alt="Japanese macaques huddling" loading="lazy"></div><figcaption class="mono">Huddle — Awajishima</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/silhouette-issa.jpg" alt="Chimpanzee silhouetted on a branch" loading="lazy"></div><figcaption class="mono">Canopy — Issa Valley</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/grooming-group-issa.jpg" alt="A cluster of chimpanzees grooming" loading="lazy"></div><figcaption class="mono">Grooming cluster — Issa Valley</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/grooming-trio-koshima.jpg" alt="Three Japanese macaques grooming" loading="lazy"></div><figcaption class="mono">Grooming trio — Koshima</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/team-capetoi.jpg" alt="Researchers watching horses above a bay" loading="lazy"></div><figcaption class="mono">Horse watch — Cape Toi</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/infant-peeking-issa.jpg" alt="Infant chimpanzee peeking over a branch" loading="lazy"></div><figcaption class="mono">Infant — Issa Valley</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/baboons-issa.jpg" alt="Yellow baboons grooming" loading="lazy"></div><figcaption class="mono">Yellow baboons — Issa Valley</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/weighing-koshima.jpg" alt="Macaque on a weighing scale on the beach" loading="lazy"></div><figcaption class="mono">Weighing day — Koshima</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/scooter-awajishima.jpg" alt="Macaques on a parked scooter" loading="lazy"></div><figcaption class="mono">Opportunists — Awajishima</figcaption></figure>
-      <figure class="rv"><div class="ph"><img src="img/gallery/rotifers.jpg" alt="Male rotifers under darkfield microscopy" loading="lazy"></div><figcaption class="mono">Where it started — rotifers</figcaption></figure>
-    </div>
+    <div class="head"><span class="mono">04 — Photos</span><h2 class="display rv">Field <span class="script">notes</span></h2></div>
+    <div class="hint mono"><span>Drag to explore · Click to enlarge</span><span class="ctrl"><button type="button" id="prev" aria-label="Previous">←</button> <button type="button" id="next" aria-label="Next">→</button></span></div>
+  </div>
+  <div class="strip" id="strip">
+    <figure class="w tone"><div class="ph"><img src="img/gallery/handclasp-issa.jpg" alt="Chimpanzees in a grooming handclasp" loading="lazy"></div><figcaption class="mono"><span>Grooming handclasp</span><span>Issa Valley</span></figcaption></figure>
+    <figure class="tone"><div class="ph"><img src="img/gallery/selfie-koshima.jpg" alt="Japanese macaque close to the camera" loading="lazy"></div><figcaption class="mono"><span>Close company</span><span>Koshima</span></figcaption></figure>
+    <figure class="tone"><div class="ph"><img src="img/gallery/silhouette-issa.jpg" alt="Chimpanzee silhouetted on a branch" loading="lazy"></div><figcaption class="mono"><span>Canopy</span><span>Issa Valley</span></figcaption></figure>
+    <figure class="w tone"><div class="ph"><img src="img/gallery/huddle-awajishima.jpg" alt="Japanese macaques huddling" loading="lazy"></div><figcaption class="mono"><span>Huddle</span><span>Awajishima</span></figcaption></figure>
+    <figure class="tone"><div class="ph"><img src="img/gallery/grooming-trio-koshima.jpg" alt="Three Japanese macaques grooming" loading="lazy"></div><figcaption class="mono"><span>Grooming trio</span><span>Koshima</span></figcaption></figure>
+    <figure class="w tone"><div class="ph"><img src="img/gallery/grooming-group-issa.jpg" alt="A cluster of chimpanzees grooming" loading="lazy"></div><figcaption class="mono"><span>Grooming cluster</span><span>Issa Valley</span></figcaption></figure>
+    <figure class="tone"><div class="ph"><img src="img/gallery/infant-peeking-issa.jpg" alt="Infant chimpanzee peeking over a branch" loading="lazy"></div><figcaption class="mono"><span>Infant</span><span>Issa Valley</span></figcaption></figure>
+    <figure class="w tone"><div class="ph"><img src="img/gallery/team-capetoi.jpg" alt="Researchers watching horses above a bay" loading="lazy"></div><figcaption class="mono"><span>Horse watch</span><span>Cape Toi</span></figcaption></figure>
+    <figure class="w tone"><div class="ph"><img src="img/gallery/baboons-issa.jpg" alt="Yellow baboons grooming" loading="lazy"></div><figcaption class="mono"><span>Yellow baboons</span><span>Issa Valley</span></figcaption></figure>
+    <figure class="tone"><div class="ph"><img src="img/gallery/weighing-koshima.jpg" alt="Macaque on a weighing scale on the beach" loading="lazy"></div><figcaption class="mono"><span>Weighing day</span><span>Koshima</span></figcaption></figure>
+    <figure class="tone"><div class="ph"><img src="img/gallery/scooter-awajishima.jpg" alt="Macaques on a parked scooter" loading="lazy"></div><figcaption class="mono"><span>Opportunists</span><span>Awajishima</span></figcaption></figure>
+    <figure class="w tone"><div class="ph"><img src="img/gallery/rotifers.jpg" alt="Male rotifers under darkfield microscopy" loading="lazy"></div><figcaption class="mono"><span>Where it started</span><span>Rotifers</span></figcaption></figure>
   </div>
 </section>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><img alt=""><p class="mono"></p></div>
 
 <section class="writing" id="writing">
   <div class="wrap">
     <div class="head"><span class="mono">05 — Writing</span><h2 class="display rv">Papers</h2></div>
     <ol class="pubs">
-      <li class="rv"><span class="yr mono">Forthcoming</span><div><span class="t">Grooming of vulnerable body regions and social bond strength in wild chacma baboons</span><span class="a"><b>Gurkin, E.</b>, et al.</span></div><span class="st mono">In prep</span></li>
-      <li class="rv"><span class="yr mono">Forthcoming</span><div><span class="t">Psychiatrists' experiences and views on evolutionary perspectives in clinical practice</span><span class="a">Gillett, G., <b>Gurkin, E.</b>, et al.</span></div><span class="st mono">In prep</span></li>
-      <li class="rv"><span class="yr mono">Forthcoming</span><div><span class="t">Levinas and primatology</span><span class="a"><b>Gurkin, E.</b></span></div><span class="st mono">Under review</span></li>
+      <li class="rv"><span class="yr mono">Manuscript</span><div><span class="t">Boundaries and bonds: analysis of social bonds and body region selection in wild chacma baboon grooming</span><span class="a"><b>Gurkin, E.</b>, Carter, A. J., Kunz, J. A., Huchard, E., Cowlishaw, G. &amp; Fernández Fueyo, E.</span>
+        <details><summary class="mono">Summary</summary><p>Do baboons let their closest partners groom the most vulnerable parts of their bodies? Across 199 grooming bouts from 42 pairs at Tsaobis, bond strength didn't predict access to vulnerable areas, and neither did kinship or rank. The pattern was strongly skewed, though: half of pairs never groomed these regions while a few devoted most of their grooming to them.</p></details></div><span class="st mono">In prep</span></li>
+      <li class="rv"><span class="yr mono">Manuscript</span><div><span class="t">Psychiatrists' experiences and views on evolutionary perspectives: a qualitative service evaluation</span><span class="a"><b>Gurkin, E.</b>, Katiyar, T., Carpenter, T., Hunt, A. D., Chaudhary, N. &amp; Gillett, G.</span>
+        <details><summary class="mono">Summary</summary><p>Focus groups with fifteen UK psychiatrists on using evolutionary explanations in the clinic. Psychiatrists reported benefits such as reduced self-stigma and better engagement, and positive responses from patients and families, but also real barriers at the patient, clinician and service level.</p></details></div><span class="st mono">In prep</span></li>
+      <li class="rv"><span class="yr mono">2025</span><div><span class="t">Any way the wind blows: testing orientation as a wind-avoidance strategy in chimpanzee nesting</span><span class="a"><b>Gurkin, E.</b> · Research report, University College London</span>
+        <details><summary class="mono">Summary</summary><p>Do chimpanzees orient their nests away from the wind? Across 178 nests at Issa Valley, Tanzania, fresh nests showed no consistent relationship with daily wind direction and older nests faced every which way, suggesting tree structure, terrain and social factors matter more than wind for nest orientation.</p></details></div><span class="st mono">Report</span></li>
     </ol>
+    <h3 class="sub mono">Also contributed to</h3>
+    <ol class="pubs">
+      <li class="rv"><span class="yr mono">2026</span><div><a class="t plain" href="https://doi.org/10.1016/j.isci.2026.117195" target="_blank" rel="noopener">Chimpanzees follow human pointing when attention is engaged ↗</a><span class="a">Melis, A. P., Rossano, F., Goguen, A. &amp; Ayebazibwe, I. · <i>iScience</i> 29 · Reliability coding (acknowledged)</span></div><span class="st mono">Published</span></li>
+    </ol>
+    <p class="more"><a class="arrow" href="mailto:eg759@cam.ac.uk?subject=Paper%20request">Ask me for a draft</a></p>
   </div>
 </section>
 
 <section class="contact" id="contact">
+  <div class="bgph tone" id="contactBg"></div>
   <div class="wrap">
-    <span class="mono">06 — Contact</span>
-    <h2 class="display rv">Get in <span class="serif">touch</span></h2>
+    <span class="mono" style="color:var(--ink-2)">06 — Contact</span>
+    <h2 class="display rv">Get in <span class="script">touch</span></h2>
     <p>I'm always glad to hear from people working on primate behaviour, comparative cognition or evolutionary approaches to mental health.</p>
     <div class="btns">
-      <a class="btn solid" href="mailto:evangurkin@hotmail.com">Email me</a>
+      <a class="btn solid" href="mailto:eg759@cam.ac.uk">Email me</a>
       <a class="btn" href="cv.pdf">CV</a>
       <a class="btn" href="#">Google Scholar</a>
       <a class="btn" href="#">ORCID</a>
@@ -322,15 +399,35 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 
 <footer>
   <div class="sunline"></div>
-  <div class="wrap mono"><span>© 2026 Evan Gurkin</span><span>Cambridge, UK · Wilmington, NC</span></div>
+  <div class="wrap mono"><span>© 2026 Evan Gurkin</span><span class="script">see you in the field</span><span>Cambridge, UK · Carolina Beach, NC</span></div>
 </footer>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-const bar=document.getElementById('bar');
-const onScroll=()=>bar.classList.toggle('solid',window.scrollY>window.innerHeight-80);
+document.documentElement.classList.add('anim');
+// reveal + colour-on-view (touch)
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.25});
+document.querySelectorAll('.rv,.tone').forEach(el=>io.observe(el));
+// nav + hero parallax
+const bar=document.getElementById('bar'),heroBg=document.getElementById('heroBg');
+const onScroll=()=>{const y=scrollY;bar.classList.toggle('solid',y>innerHeight-80);if(y<innerHeight)heroBg.style.transform=`scale(1.04) translateY(${y*.18}px)`};
 addEventListener('scroll',onScroll,{passive:true});onScroll();
+// count-up stats
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,end=+el.dataset.count,t0=performance.now();
+  const step=t=>{const p=Math.min((t-t0)/1200,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step);cio.unobserve(el)}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+// map pins -> site cards
+document.querySelectorAll('.pin').forEach(p=>p.addEventListener('click',()=>{const s=document.getElementById(p.dataset.site);if(!s)return;s.scrollIntoView({behavior:'smooth',block:'center'});s.classList.add('flash');setTimeout(()=>s.classList.remove('flash'),1600)}));
+// draggable strip
+const strip=document.getElementById('strip');let down=false,sx=0,sl=0,moved=0;
+strip.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=0;sx=e.clientX;sl=strip.scrollLeft});
+addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;moved=Math.max(moved,Math.abs(dx));if(moved>4)strip.classList.add('drag');strip.scrollLeft=sl-dx});
+addEventListener('pointerup',()=>{down=false;setTimeout(()=>strip.classList.remove('drag'),0)});
+const by=d=>strip.scrollBy({left:d*strip.clientWidth*.7,behavior:'smooth'});
+document.getElementById('prev').onclick=()=>by(-1);document.getElementById('next').onclick=()=>by(1);
+// lightbox
+const lb=document.getElementById('lb'),lbi=lb.querySelector('img'),lbp=lb.querySelector('p');
+strip.addEventListener('click',e=>{if(moved>4)return;const f=e.target.closest('figure');if(!f)return;const i=f.querySelector('img');lbi.src=i.src;lbi.alt=i.alt;lbp.textContent=[...f.querySelectorAll('figcaption span')].map(s=>s.textContent).join(' · ');lb.classList.add('open')});
+lb.addEventListener('click',()=>lb.classList.remove('open'));addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
 </script>
 </body>
 </html>
