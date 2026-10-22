@@ -10,7 +10,7 @@
 <meta property="og:image" content="https://evangurkin.com/img/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:dark;
@@ -28,9 +28,8 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
 img{display:block;max-width:100%}
 a{color:inherit}
 .wrap{max-width:1320px;margin:0 auto;padding:0 var(--pad)}
-.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+.mono{font-size:.86rem;letter-spacing:0}
 .display{font-family:"Archivo",sans-serif;font-stretch:72%;font-variation-settings:"wdth" 72;font-weight:800;letter-spacing:-.015em;line-height:.92}
-.script{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;color:var(--sand);font-size:1.08em;font-stretch:100%;font-variation-settings:normal}
 .arrow{display:inline-flex;align-items:center;gap:.5em;text-decoration:none;font-weight:600;border-bottom:1px solid currentColor;padding-bottom:2px}
 .arrow::after{content:"→";transition:transform .25s}
 .arrow:hover::after{transform:translateX(5px)}
@@ -69,12 +68,12 @@ header.bar.solid{background:rgba(12,12,11,.86);backdrop-filter:blur(10px);border
 
 /* SECTIONS */
 section{padding:clamp(84px,11vw,150px) 0}
-.head{display:grid;grid-template-columns:200px 1fr auto;gap:24px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
 .head .mono{color:var(--muted);align-self:baseline}
 .head h2{font-size:clamp(2.8rem,7vw,5.8rem);margin:0}
 
 /* ABOUT */
-.about .grid{display:grid;grid-template-columns:200px 1fr 1fr;gap:24px}
+.about .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,64px)}
 .about .copy p{margin:0 0 18px;max-width:33em;color:var(--ink-2)}
 .about .copy p.lead{font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.4;color:var(--ink)}
 .about figure{margin:0}
@@ -88,10 +87,6 @@ section{padding:clamp(84px,11vw,150px) 0}
 .about figure .bgph{width:100%;height:100%;background:#333 url(img/me.jpg) 30% 30%/cover}
 .about figure:hover .bgph{transform:scale(1.03)}
 figcaption{margin-top:10px;color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px;border-top:1px solid var(--ink)}
-.stats div{padding:16px 16px 0 0}
-.stats b{display:block;font-stretch:72%;font-variation-settings:"wdth" 72;font-weight:800;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1}
-.stats span{color:var(--muted)}
 
 /* RESEARCH */
 .research{background:var(--bg-2)}
@@ -103,20 +98,12 @@ figcaption{margin-top:10px;color:var(--muted)}
 .theme .ph.empty{display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#2a2a26,#121210);color:var(--muted)}
 .theme .ph.empty .script{font-size:3rem;line-height:1;color:var(--ink-2)}
 .theme .ph .credit{left:auto}
-.theme .ph .n{position:absolute;top:16px;left:16px;color:#fff}
 .theme .txt{display:grid;grid-template-columns:1fr auto;gap:6px 24px;padding-top:16px;border-top:1px solid var(--line);margin-top:16px}
 .theme h3{font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:800;font-size:clamp(1.5rem,2.3vw,2rem);line-height:1;margin:0}
 .theme .where{color:var(--muted);text-align:right;white-space:nowrap}
 .theme p{grid-column:1/-1;margin:6px 0 0;color:var(--ink-2);max-width:36em}
 
 /* FIELD */
-.map{border:1px solid var(--line);padding:clamp(12px,2vw,28px);margin-bottom:clamp(40px,5vw,72px);background:var(--bg-2);position:relative}
-.map svg{width:100%;height:auto;display:block}
-.map .pin{cursor:pointer}
-.map .pin circle.halo{fill:var(--sun);opacity:0;transition:opacity .3s,r .3s}
-.map .pin:hover circle.halo{opacity:.25}
-.map .pin text{transition:fill .2s}
-.map .pin:hover text{fill:var(--sun)}
 .sites{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 24px}
 .site{margin:0;scroll-margin-top:90px}
 .site .ph{aspect-ratio:1/1;overflow:hidden;background:var(--bg-2);position:relative}
@@ -125,7 +112,6 @@ figcaption{margin-top:10px;color:var(--muted)}
 .site:hover .ph img{transform:scale(1.04)}
 .site .ph.empty{display:grid;place-items:center;border:1px dashed var(--line)}
 .site .ph.empty .script{font-size:2.4rem;line-height:1;color:var(--muted)}
-.site.flash .ph{outline:2px solid var(--sun);outline-offset:4px}
 .site .cap{display:flex;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
 .site h3{margin:0;font-size:1.05rem;font-weight:700}
 .site .yr{color:var(--muted);white-space:nowrap}
@@ -190,12 +176,10 @@ figcaption{margin-top:10px;color:var(--muted)}
 
 footer .sunline{height:3px;background:linear-gradient(90deg,var(--sea),var(--sand) 45%,var(--sun))}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px;color:var(--muted)}
-footer .script{font-size:1.15rem;line-height:1;text-transform:none}
+
 
 /* reveal */
-.rv{transition:opacity .9s ease,transform .9s ease}
-.anim .rv:not(.in){opacity:0;transform:translateY(24px)}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.ticker .track,body::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.ticker .track,body::after{animation:none}}
 
 @media (max-width:980px){
   .head{grid-template-columns:1fr;gap:10px}.head .arrow{justify-self:start}
@@ -242,8 +226,8 @@ footer .script{font-size:1.15rem;line-height:1;text-transform:none}
   <div class="wrap inner">
     <h1 class="display">Evan<br>Gurkin</h1>
     <div class="row">
-      <p class="tag">Primate behaviour, cognition and the <span class="script">evolutionary roots</span> of mental health.</p>
-      <div class="meta mono">PhD Student · University of Cambridge<br>Cambridge, UK · Carolina Beach, NC</div>
+      <p class="tag">Primate behaviour, cognition and the evolutionary roots of mental health.</p>
+      <div class="meta mono">PhD student, University of Cambridge<br>Cambridge, UK and Carolina Beach, NC</div>
     </div>
   </div>
 </section>
@@ -255,21 +239,15 @@ footer .script{font-size:1.15rem;line-height:1;text-transform:none}
 
 <section class="about" id="about">
   <div class="wrap">
-    <div class="head"><span class="mono">01 — About</span><h2 class="display rv">Field <span class="script">to</span> clinic</h2></div>
+    <div class="head"><h2 class="display">Field to clinic</h2></div>
     <div class="grid">
-      <div class="spacer"></div>
-      <div class="copy rv">
+            <div class="copy">
         <p class="lead">I'm a PhD student in Biological Anthropology at the University of Cambridge.</p>
         <p>My interest in mental health started long before primatology. I grew up working in community mental health, including on an Assertive Community Treatment Team (ACTT), which supports people living with serious mental illness in their homes and communities. That work showed me how much relationships, stress and isolation shape a person's wellbeing, and those questions have followed me into the field.</p>
         <p>Since then I've studied chimpanzees in western Tanzania, baboons in Namibia and macaques in Japan and Gibraltar, looking at how other primates form bonds, regulate their behaviour and cope with social life.</p>
         <p>I hold an MSc in Human Evolution and Behaviour from UCL (Distinction) and a BSc from UNC Chapel Hill, where I studied biology, psychology and chemistry. I've also worked as an EMT and as head surf instructor at a surf school back home in Carolina Beach, North Carolina, where I developed therapy surf lessons for ACTT patients.</p>
-        <div class="stats">
-          <div><b data-count="6">6</b><span class="mono">Species in the field</span></div>
-          <div><b data-count="4">4</b><span class="mono">Countries</span></div>
-          <div><b data-count="3">3</b><span class="mono">Continents</span></div>
-        </div>
       </div>
-      <div class="pics rv">
+      <div class="pics">
         <figure class="tone"><div class="frame"><div class="bgph" role="img" aria-label="Evan with a feral horse at Cape Toi, Japan"></div></div><figcaption class="mono">Cape Toi, Japan</figcaption></figure>
         <figure class="tone small"><div class="frame"><img src="img/ev-surfing.jpg" alt="Evan surfing on a foggy day"></div><figcaption class="mono">Off duty, North Carolina</figcaption></figure>
       </div>
@@ -279,25 +257,25 @@ footer .script{font-size:1.15rem;line-height:1;text-transform:none}
 
 <section class="research" id="research">
   <div class="wrap">
-    <div class="head"><span class="mono">02 — Research</span><h2 class="display rv">Current <span class="script">work</span></h2><a class="arrow mono" href="#writing">Papers</a></div>
+    <div class="head"><h2 class="display">Current work</h2><a class="arrow mono" href="#writing">Papers</a></div>
     <div class="themes">
-      <article class="theme rv tone">
-        <div class="ph"><img src="img/gibraltar.jpg" alt="The Rock of Gibraltar at sunset"><span class="n mono">01</span></div>
+      <article class="theme tone">
+        <div class="ph"><img src="img/gibraltar.jpg" alt="The Rock of Gibraltar at sunset"></div>
         <div class="txt"><h3>Mirrors &amp; self-directed behaviour</h3><span class="where mono">Gibraltar</span>
         <p>How Barbary macaques explore and use mirrors and reflective surfaces. The core project of my PhD.</p></div>
       </article>
-      <article class="theme rv tone">
-        <div class="ph"><img src="img/research-cylinder.jpg" alt="Evan running the cylinder task with a Japanese macaque" style="object-position:center 40%"><span class="n mono">02</span></div>
+      <article class="theme tone">
+        <div class="ph"><img src="img/research-cylinder.jpg" alt="Evan running the cylinder task with a Japanese macaque" style="object-position:center 40%"></div>
         <div class="txt"><h3>Inhibitory control</h3><span class="where mono">Koshima, Japan</span>
         <p>A multi-site replication of the cylinder task with Japanese macaques, testing how self-control varies with sex and dominance rank.</p></div>
       </article>
-      <article class="theme rv tone">
-        <div class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg/1280px-Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg" alt="Chacma baboons grooming, with an infant"><span class="n mono">03</span><span class="credit mono">Photo: Bernard Dupont, CC BY-SA 2.0</span></div>
+      <article class="theme tone">
+        <div class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg/1280px-Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg" alt="Chacma baboons grooming, with an infant"><span class="credit mono">Photo: Bernard Dupont, CC BY-SA 2.0</span></div>
         <div class="txt"><h3>Social bonds &amp; trust</h3><span class="where mono">Tsaobis, Namibia</span>
         <p>Whether grooming of vulnerable body regions reflects the strength of the bond between partners, using video of 199 grooming bouts across 42 pairs of wild chacma baboons at Tsaobis Nature Park.</p></div>
       </article>
-      <article class="theme rv tone">
-        <div class="ph"><img src="img/research-mother.jpg" alt="Chimpanzee mother and juvenile feeding, Issa Valley" style="object-position:center 35%"><span class="n mono">04</span></div>
+      <article class="theme tone">
+        <div class="ph"><img src="img/research-mother.jpg" alt="Chimpanzee mother and juvenile feeding, Issa Valley" style="object-position:center 35%"></div>
         <div class="txt"><h3>Evolutionary psychiatry</h3><span class="where mono">UK &amp; comparative</span>
         <p>Focus groups with UK psychiatrists on how evolutionary frameworks are used in clinical practice, alongside comparative work on adolescence, cultural transmission and social isolation.</p></div>
       </article>
@@ -307,44 +285,22 @@ footer .script{font-size:1.15rem;line-height:1;text-transform:none}
 
 <section class="field" id="field">
   <div class="wrap">
-    <div class="head"><span class="mono">03 — Fieldwork</span><h2 class="display rv">Field <span class="script">sites</span></h2><span class="mono" style="color:var(--muted)">Tap a pin</span></div>
-    <div class="map rv">
-      <svg viewBox="0 0 1000 440" role="img" aria-label="Map of field sites">
-        <defs><pattern id="dots" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#ece8e0" opacity=".22"/></pattern></defs>
-        <g fill="url(#dots)">
-          <path d="M60 80 Q140 30 250 60 Q320 80 300 150 Q280 200 240 220 Q220 270 250 290 L230 310 Q180 280 160 230 Q100 190 70 150 Z"/>
-          <path d="M240 290 Q300 290 320 340 Q330 410 290 440 Q260 430 255 380 Q235 330 240 290Z"/>
-          <path d="M440 80 Q520 50 600 70 Q700 50 800 80 Q880 100 900 160 Q860 200 800 190 Q760 230 720 220 Q680 190 640 200 Q600 170 560 180 Q520 160 470 160 Q440 130 440 80Z"/>
-          <path d="M450 190 Q520 180 570 210 Q600 260 580 320 Q560 390 520 410 Q490 370 480 310 Q440 260 450 190Z"/>
-          <path d="M820 320 Q880 310 900 350 Q880 390 830 380 Q810 350 820 320Z"/>
-        </g>
-        <path id="route" d="M218 195 C 330 110, 420 100, 478 118 C 470 180, 470 220, 498 275 M478 118 C 490 250, 520 290, 550 290 M478 118 C 640 50, 790 90, 862 158 M862 158 L880 130" fill="none" stroke="#e0703a" stroke-width="1.6" stroke-dasharray="5 6"/>
-        <g font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="1.2" fill="#ece8e0">
-          <g><circle cx="218" cy="195" r="6" fill="#5d9aa8"/><text x="130" y="228">CAROLINA BEACH</text></g>
-          <g><circle cx="478" cy="118" r="6" fill="#ece8e0"/><text x="440" y="100">CAMBRIDGE</text></g>
-          <g class="pin" data-site="s-gib"><circle class="halo" cx="462" cy="162" r="18"/><circle cx="462" cy="162" r="6" fill="#e0703a"/><text x="360" y="167">GIBRALTAR</text></g>
-          <g class="pin" data-site="s-tsa"><circle class="halo" cx="498" cy="275" r="18"/><circle cx="498" cy="275" r="6" fill="#e0703a"/><text x="410" y="280">TSAOBIS</text></g>
-          <g class="pin" data-site="s-iss"><circle class="halo" cx="550" cy="290" r="18"/><circle cx="550" cy="290" r="6" fill="#e0703a"/><text x="564" y="295">ISSA VALLEY</text></g>
-          <g class="pin" data-site="s-kos"><circle class="halo" cx="862" cy="158" r="18"/><circle cx="862" cy="158" r="6" fill="#e0703a"/><text x="738" y="192">KOSHIMA · CAPE TOI</text></g>
-          <g class="pin" data-site="s-awa"><circle class="halo" cx="880" cy="130" r="18"/><circle cx="880" cy="130" r="6" fill="#e0703a"/><text x="830" y="112">AWAJISHIMA</text></g>
-        </g>
-      </svg>
-    </div>
+    <div class="head"><h2 class="display">Field sites</h2></div>
     <div class="sites">
-      <figure class="site rv tone" id="s-gib"><div class="ph"><img src="img/gibraltar.jpg" alt="The Rock of Gibraltar at sunset" loading="lazy" style="object-position:40% center"></div><figcaption><div class="cap"><h3>Gibraltar</h3><span class="yr mono">2026 –</span></div><div class="sp">Barbary macaques</div><p>Mirror and cognition research for my PhD, University of Cambridge.</p></figcaption></figure>
-      <figure class="site rv tone" id="s-kos"><div class="ph"><img src="img/koshima-beach.jpg" alt="Evan on the beach with Japanese macaques, Koshima" loading="lazy"></div><figcaption><div class="cap"><h3>Koshima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Cognition experiments with the Wildlife Research Center, Kyoto University.</p></figcaption></figure>
-      <figure class="site rv tone" id="s-toi"><div class="ph"><img src="img/capetoi.jpg" alt="Mare and foal, Cape Toi" loading="lazy"></div><figcaption><div class="cap"><h3>Cape Toi, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Feral horses</div><p>Drone-based observation of horse social groups with Kyoto University.</p></figcaption></figure>
-      <figure class="site rv tone" id="s-awa"><div class="ph"><img src="img/awajishima.jpg" alt="Juvenile Japanese macaque above the sea, Awajishima" loading="lazy"></div><figcaption><div class="cap"><h3>Awajishima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Field training for Kyoto University at the Awajishima Monkey Center.</p></figcaption></figure>
-      <figure class="site rv tone" id="s-tsa"><div class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg/1280px-Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg" alt="Chacma baboons grooming" loading="lazy" style="object-position:30% center"><span class="credit mono">Photo: B. Dupont, CC BY-SA 2.0</span></div><figcaption><div class="cap"><h3>Tsaobis, Namibia</h3><span class="yr mono">MSc</span></div><div class="sp">Chacma baboons</div><p>Grooming, trust and social bonds in a wild desert population.</p></figcaption></figure>
-      <figure class="site rv tone" id="s-iss"><div class="ph"><img src="img/issa.jpg" alt="Young chimpanzee in a strangler fig, Issa Valley" loading="lazy"></div><figcaption><div class="cap"><h3>Issa Valley, Tanzania</h3><span class="yr mono">MSc</span></div><div class="sp">Chimpanzees &amp; yellow baboons</div><p>Fieldwork with wild chimpanzees during my MSc, including an independent project on nest orientation and wind.</p></figcaption></figure>
+      <figure class="site tone" id="s-gib"><div class="ph"><img src="img/gibraltar.jpg" alt="The Rock of Gibraltar at sunset" loading="lazy" style="object-position:40% center"></div><figcaption><div class="cap"><h3>Gibraltar</h3><span class="yr mono">2026 –</span></div><div class="sp">Barbary macaques</div><p>Mirror and cognition research for my PhD, University of Cambridge.</p></figcaption></figure>
+      <figure class="site tone" id="s-kos"><div class="ph"><img src="img/koshima-beach.jpg" alt="Evan on the beach with Japanese macaques, Koshima" loading="lazy"></div><figcaption><div class="cap"><h3>Koshima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Cognition experiments with the Wildlife Research Center, Kyoto University.</p></figcaption></figure>
+      <figure class="site tone" id="s-toi"><div class="ph"><img src="img/capetoi.jpg" alt="Mare and foal, Cape Toi" loading="lazy"></div><figcaption><div class="cap"><h3>Cape Toi, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Feral horses</div><p>Drone-based observation of horse social groups with Kyoto University.</p></figcaption></figure>
+      <figure class="site tone" id="s-awa"><div class="ph"><img src="img/awajishima.jpg" alt="Juvenile Japanese macaque above the sea, Awajishima" loading="lazy"></div><figcaption><div class="cap"><h3>Awajishima, Japan</h3><span class="yr mono">2026</span></div><div class="sp">Japanese macaques</div><p>Field training for Kyoto University at the Awajishima Monkey Center.</p></figcaption></figure>
+      <figure class="site tone" id="s-tsa"><div class="ph"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg/1280px-Chacma_Baboons_%28Papio_ursinus%29_%286035823672%29.jpg" alt="Chacma baboons grooming" loading="lazy" style="object-position:30% center"><span class="credit mono">Photo: B. Dupont, CC BY-SA 2.0</span></div><figcaption><div class="cap"><h3>Tsaobis, Namibia</h3><span class="yr mono">MSc</span></div><div class="sp">Chacma baboons</div><p>Grooming, trust and social bonds in a wild desert population.</p></figcaption></figure>
+      <figure class="site tone" id="s-iss"><div class="ph"><img src="img/issa.jpg" alt="Young chimpanzee in a strangler fig, Issa Valley" loading="lazy"></div><figcaption><div class="cap"><h3>Issa Valley, Tanzania</h3><span class="yr mono">MSc</span></div><div class="sp">Chimpanzees &amp; yellow baboons</div><p>Fieldwork with wild chimpanzees during my MSc, including an independent project on nest orientation and wind.</p></figcaption></figure>
     </div>
   </div>
 </section>
 
 <section class="gallery" id="gallery">
   <div class="wrap">
-    <div class="head"><span class="mono">04 — Photos</span><h2 class="display rv">Field <span class="script">notes</span></h2></div>
-    <div class="hint mono"><span>Drag to explore · Click to enlarge</span><span class="ctrl"><button type="button" id="prev" aria-label="Previous">←</button> <button type="button" id="next" aria-label="Next">→</button></span></div>
+    <div class="head"><h2 class="display">Field notes</h2></div>
+    <div class="hint mono"><span>Drag to explore, click to enlarge</span><span class="ctrl"><button type="button" id="prev" aria-label="Previous">←</button> <button type="button" id="next" aria-label="Next">→</button></span></div>
   </div>
   <div class="strip" id="strip">
     <figure class="w tone"><div class="ph"><img src="img/gallery/handclasp-issa.jpg" alt="Chimpanzees in a grooming handclasp" loading="lazy"></div><figcaption class="mono"><span>Grooming handclasp</span><span>Issa Valley</span></figcaption></figure>
@@ -365,19 +321,19 @@ footer .script{font-size:1.15rem;line-height:1;text-transform:none}
 
 <section class="writing" id="writing">
   <div class="wrap">
-    <div class="head"><span class="mono">05 — Writing</span><h2 class="display rv">Papers</h2></div>
+    <div class="head"><h2 class="display">Papers</h2></div>
     <ol class="pubs">
-      <li class="rv"><span class="yr mono">Manuscript</span><div><span class="t">Boundaries and bonds: analysis of social bonds and body region selection in wild chacma baboon grooming</span><span class="a"><b>Gurkin, E.</b>, Carter, A. J., Kunz, J. A., Huchard, E., Cowlishaw, G. &amp; Fernández Fueyo, E.</span>
+      <li><span class="yr mono">Manuscript</span><div><span class="t">Boundaries and bonds: analysis of social bonds and body region selection in wild chacma baboon grooming</span><span class="a"><b>Gurkin, E.</b>, Carter, A. J., Kunz, J. A., Huchard, E., Cowlishaw, G. &amp; Fernández Fueyo, E.</span>
         <details><summary class="mono">Summary</summary><p>Do baboons let their closest partners groom the most vulnerable parts of their bodies? Across 199 grooming bouts from 42 pairs at Tsaobis, bond strength didn't predict access to vulnerable areas, and neither did kinship or rank. The pattern was strongly skewed, though: half of pairs never groomed these regions while a few devoted most of their grooming to them.</p></details></div><span class="st mono">In prep</span></li>
-      <li class="rv"><span class="yr mono">Manuscript</span><div><span class="t">Psychiatrists' experiences and views on evolutionary perspectives: a qualitative service evaluation</span><span class="a"><b>Gurkin, E.</b>, Katiyar, T., Carpenter, T., Hunt, A. D., Chaudhary, N. &amp; Gillett, G.</span>
+      <li><span class="yr mono">Manuscript</span><div><span class="t">Psychiatrists' experiences and views on evolutionary perspectives: a qualitative service evaluation</span><span class="a"><b>Gurkin, E.</b>, Katiyar, T., Carpenter, T., Hunt, A. D., Chaudhary, N. &amp; Gillett, G.</span>
         <details><summary class="mono">Summary</summary><p>Focus groups with fifteen UK psychiatrists on using evolutionary explanations in the clinic. Psychiatrists reported benefits such as reduced self-stigma and better engagement, and positive responses from patients and families, but also real barriers at the patient, clinician and service level.</p></details></div><span class="st mono">In prep</span></li>
-      <li class="rv"><span class="yr mono">Manuscript</span><div><span class="t">Inhibitory control in Japanese macaques: sex and rank effects on cylinder task performance</span><span class="a">Kaigaishi, Y., <b>Gurkin, E.</b> &amp; Yamamoto, S.</span></div><span class="st mono">In prep</span></li>
-      <li class="rv"><span class="yr mono">2025</span><div><span class="t">Any way the wind blows: testing orientation as a wind-avoidance strategy in chimpanzee nesting</span><span class="a"><b>Gurkin, E.</b> · MSc independent project, University College London</span>
+      <li><span class="yr mono">Manuscript</span><div><span class="t">Inhibitory control in Japanese macaques: sex and rank effects on cylinder task performance</span><span class="a">Kaigaishi, Y., <b>Gurkin, E.</b> &amp; Yamamoto, S.</span></div><span class="st mono">In prep</span></li>
+      <li><span class="yr mono">2025</span><div><span class="t">Any way the wind blows: testing orientation as a wind-avoidance strategy in chimpanzee nesting</span><span class="a"><b>Gurkin, E.</b>, MSc independent project, University College London</span>
         <details><summary class="mono">Summary</summary><p>Do chimpanzees orient their nests away from the wind? Across 178 nests at Issa Valley, Tanzania, fresh nests showed no consistent relationship with daily wind direction and older nests faced every which way, suggesting tree structure, terrain and social factors matter more than wind for nest orientation.</p></details></div><span class="st mono">Report</span></li>
     </ol>
     <h3 class="sub mono">Also contributed to</h3>
     <ol class="pubs">
-      <li class="rv"><span class="yr mono">2026</span><div><a class="t plain" href="https://doi.org/10.1016/j.isci.2026.117195" target="_blank" rel="noopener">Chimpanzees follow human pointing when attention is engaged ↗</a><span class="a">Melis, A. P., Rossano, F., Goguen, A. &amp; Ayebazibwe, I. · <i>iScience</i> 29 · Reliability coding (acknowledged)</span></div><span class="st mono">Published</span></li>
+      <li><span class="yr mono">2026</span><div><a class="t plain" href="https://doi.org/10.1016/j.isci.2026.117195" target="_blank" rel="noopener">Chimpanzees follow human pointing when attention is engaged ↗</a><span class="a">Melis, A. P., Rossano, F., Goguen, A. &amp; Ayebazibwe, I. <i>iScience</i> 29. Reliability coding (acknowledged).</span></div><span class="st mono">Published</span></li>
     </ol>
     <p class="more"><a class="arrow" href="mailto:eg759@cam.ac.uk?subject=Paper%20request">Ask me for a draft</a></p>
   </div>
@@ -386,39 +342,26 @@ footer .script{font-size:1.15rem;line-height:1;text-transform:none}
 <section class="contact" id="contact">
   <div class="bgph tone" id="contactBg"></div>
   <div class="wrap">
-    <span class="mono" style="color:var(--ink-2)">06 — Contact</span>
-    <h2 class="display rv">Get in <span class="script">touch</span></h2>
+        <h2 class="display">Get in touch</h2>
     <p>I'm always glad to hear from people working on primate behaviour, comparative cognition or evolutionary approaches to mental health.</p>
     <div class="btns">
       <a class="btn solid" href="mailto:eg759@cam.ac.uk">Email me</a>
       <a class="btn" href="cv.pdf">CV</a>
-      <a class="btn" href="#">Google Scholar</a>
-      <a class="btn" href="#">ORCID</a>
     </div>
-    <div class="addr mono">Darwin College · Silver Street · Cambridge CB3 9EU</div>
+    <div class="addr mono">Darwin College, Silver Street, Cambridge CB3 9EU</div>
   </div>
 </section>
 
 <footer>
   <div class="sunline"></div>
-  <div class="wrap mono"><span>© 2026 Evan Gurkin</span><span class="script">see you in the field</span><span>Cambridge, UK · Carolina Beach, NC</span></div>
+  <div class="wrap mono"><span>© 2026 Evan Gurkin</span><span>Cambridge, UK and Carolina Beach, NC</span></div>
 </footer>
 
 <script>
-document.documentElement.classList.add('anim');
-// reveal + colour-on-view (touch)
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.25});
-document.querySelectorAll('.rv,.tone').forEach(el=>io.observe(el));
 // nav + hero parallax
 const bar=document.getElementById('bar'),heroBg=document.getElementById('heroBg');
 const onScroll=()=>{const y=scrollY;bar.classList.toggle('solid',y>innerHeight-80);if(y<innerHeight)heroBg.style.transform=`scale(1.04) translateY(${y*.18}px)`};
 addEventListener('scroll',onScroll,{passive:true});onScroll();
-// count-up stats
-const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,end=+el.dataset.count,t0=performance.now();
-  const step=t=>{const p=Math.min((t-t0)/1200,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step);cio.unobserve(el)}),{threshold:.6});
-document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
-// map pins -> site cards
-document.querySelectorAll('.pin').forEach(p=>p.addEventListener('click',()=>{const s=document.getElementById(p.dataset.site);if(!s)return;s.scrollIntoView({behavior:'smooth',block:'center'});s.classList.add('flash');setTimeout(()=>s.classList.remove('flash'),1600)}));
 // draggable strip
 const strip=document.getElementById('strip');let down=false,sx=0,sl=0,moved=0;
 strip.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=0;sx=e.clientX;sl=strip.scrollLeft});
@@ -428,7 +371,7 @@ const by=d=>strip.scrollBy({left:d*strip.clientWidth*.7,behavior:'smooth'});
 document.getElementById('prev').onclick=()=>by(-1);document.getElementById('next').onclick=()=>by(1);
 // lightbox
 const lb=document.getElementById('lb'),lbi=lb.querySelector('img'),lbp=lb.querySelector('p');
-strip.addEventListener('click',e=>{if(moved>4)return;const f=e.target.closest('figure');if(!f)return;const i=f.querySelector('img');lbi.src=i.src;lbi.alt=i.alt;lbp.textContent=[...f.querySelectorAll('figcaption span')].map(s=>s.textContent).join(' · ');lb.classList.add('open')});
+strip.addEventListener('click',e=>{if(moved>4)return;const f=e.target.closest('figure');if(!f)return;const i=f.querySelector('img');lbi.src=i.src;lbi.alt=i.alt;lbp.textContent=[...f.querySelectorAll('figcaption span')].map(s=>s.textContent).join(', ');lb.classList.add('open')});
 lb.addEventListener('click',()=>lb.classList.remove('open'));addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
 </script>
 </body>
